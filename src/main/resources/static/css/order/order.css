@@ -1,0 +1,90 @@
+
+
+body {
+}
+.btn{
+    background-color: #8C1822;
+}
+.badge-box{
+    background-color: #8C1822;
+    border-radius: 4px;
+}
+
+.card {
+    margin: auto;
+    max-width: 950px;
+    width: 90%;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1rem;
+    border: transparent
+}
+
+.summary {
+    background-color: #ddd;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding: 4vh;
+    color: rgb(65, 65, 65)
+}
+
+.container-fluid{
+    background-color: #BFA288;
+}
+
+.header-text-center{
+    font-size: 32px;
+    font-weight: bold;
+    color: #260101;
+    padding-top: 10px;
+}
+
+@media (max-width: 767px) {
+    .summary {
+        border-top-right-radius: unset;
+        border-bottom-left-radius: 1rem
+    }
+}
+
+.row {
+    margin: 0
+}
+
+.title b {
+    font-size: 1.5rem
+}
+
+.col-2,
+.col {
+    padding: 0 1vh
+}
+
+img {
+    width: 3.5rem
+}
+
+hr {
+    margin-top: 1.25rem
+}
+.products {
+    width: 100%;
+}
+.products .price, .products .action {
+    line-height: 38px;
+}
+.products .action {
+    line-height: 38px;
+}
+
+.btn-pay{
+    display: block;
+    background-color: #8C1822;
+    color: white;
+    font-weight: 550;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid #8C1822;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+}
