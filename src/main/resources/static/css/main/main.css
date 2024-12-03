@@ -1,0 +1,85 @@
+* {
+    margin: unset;
+}
+
+body {
+    height: 100vh;
+    background-image: url("../../imgs/main-background-image.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.box {
+    width: 500px;
+    height: 300px;
+
+    top: 50%;
+    left: 50%;
+
+    background-color: white;
+    border: 1px solid #8C1822;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px #8C1822;
+
+
+    transform: translate(-50%, -50%);
+
+    padding: 1rem;
+    position: absolute;
+
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.box > .box-header {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+.box > .box-header > button {
+    background-color: white;
+    border: none;
+
+}
+
+.box > .box-header > button > i {
+    color: #bfa288;
+    cursor: pointer;
+    font-size:1.5rem;
+}
+
+.box > span {
+    font-size: 2rem;
+    font-weight: bold;
+    padding-bottom: 1rem;
+}
+
+.box > a {
+
+    text-decoration: unset;
+    width: 60%;
+    padding: 1rem;
+    font-size: 3rem;
+    background-color: #BFA288ee;
+    border-radius: 1rem;
+    color: white;
+
+
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.box > a:hover {
+    background-color: #bfa288ff;
+}
