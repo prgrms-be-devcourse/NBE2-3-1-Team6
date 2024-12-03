@@ -30,12 +30,13 @@ body {
 }
 
 .header-logo {
-    font-size: 27px;
+    font-size: 28px;
     font-weight: bold;
-
+    font-family: Georgia;
 }
 
 .header-cart {
+    font-family: Georgia;
     font-size: 18px;
     padding: 10px 20px;
     background-color: #fff;
