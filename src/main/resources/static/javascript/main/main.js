@@ -22,7 +22,7 @@ adcbtn.onclick = () => {
                     }
                 }
             }
-            request.open("POST", "./", true);
+            request.open("POST", "/", true);
             request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             request.send(`pw=${pw}`);
         }

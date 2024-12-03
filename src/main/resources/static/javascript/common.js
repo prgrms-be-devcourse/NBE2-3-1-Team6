@@ -72,21 +72,49 @@ class ModalObj {
     }
 
 
-    createProductDetail(id) {
+    createProductDetail(id, buttonOptions) {
         this.cover.innerHTML = '';
 
         const productModal = new DOMParser().parseFromString(`
-        <div class="modal">
-                <span class="title"></span>
-                <img src="" alt="">
-                <span class="text"></span>
-                
+        <div class="detail modal">
+                <span class="title">상품 설명</span>
+                <div class="main">
+                    <div class="img-box">
+                        <img src="../imgs/whitebell.jpg" alt="">
+                    </div>
+                    <div class="info-box">
+                        <span class="info-text">상품 상세 정보</span>
+                        <table class="info-table">
+                            <tr>
+                                <th>이름</th>
+                                <td>하얀 종 오너먼트</td>
+                            </tr>
+                            <tr>
+                                <th>분류</th>
+                                <td>종</td>
+                            </tr>
+                            <tr>
+                                <th>가격</th>
+                                <td>2000</td>
+                            </tr>
+                            <tr>
+                                <th>설명</th>
+                                <td>하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. </td>
+                            </tr>
+                        </table>        
+                    </div>
+                </div>
                 <div class="button-container">
                 </div>
             </div>
         `,'text/html').querySelector('.modal');
 
         const buttonContainer = productModal.querySelector('.button-container');
+
+        for (const buttonOption of buttonOptions) {
+            const button = this.createButton(buttonOption['title'], buttonOption['onclick']);
+            buttonContainer.append(button);
+        }
 
         this.cover.append(productModal);
     }
