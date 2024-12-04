@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
+import java.util.List;
+
+@RequiredArgsConstructor
 public class OrderController {
 
     @GetMapping("/")
@@ -23,5 +26,17 @@ public class OrderController {
             return "false";
         }
     }
+
+    @Autowired
+    private final OrderService orderService;
+
+    @ResponseBody
+    @GetMapping("/orders")
+    public ResponseEntity<List<OrderResponseDto>> getOrders(){
+        return ResponseEntity.ok(orderService.getOrders());
+    }
+
+
+}
 
 }
