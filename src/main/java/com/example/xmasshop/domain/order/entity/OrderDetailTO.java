@@ -9,4 +9,7 @@ import org.apache.ibatis.type.Alias;
 @Getter
 @Setter
 public class OrderDetailTO {
+    private String order_id;
+    private String product_id;
+    private String quantity;
 }
