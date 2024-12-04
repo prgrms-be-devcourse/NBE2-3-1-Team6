@@ -1,5 +1,12 @@
 package com.example.xmasshop.domain.product.controller;
 
+import com.example.xmasshop.domain.product.dto.ItemResponseDto;
+import com.example.xmasshop.domain.product.service.ProductService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 import com.example.xmasshop.domain.product.entity.ItemClassificationTO;
 import com.example.xmasshop.domain.product.entity.ItemsTO;
 import com.example.xmasshop.domain.product.repository.ProductRepository;
@@ -9,21 +16,44 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
+import java.util.List;
+
 @Controller
+@RequiredArgsConstructor
 public class ProductController {
+
+    @Autowired
+    private final ProductService productService;
 
     @Autowired
     Utils utils;
 
     @Autowired
     ProductRepository productRepository;
+
+    @GetMapping("/items")
+    @ResponseBody
+    public ResponseEntity<List<ItemResponseDto>> getAllItems(){
+        return ResponseEntity.ok(productService.getAllItems());
+    }
+
+    @ResponseBody
+    @DeleteMapping("/items/{id}")
+    public ResponseEntity<String> deleteItem(@PathVariable("id") Integer id){
+        System.out.println(id);
+        productService.deleteItem(id);
+        return ResponseEntity.ok(String.valueOf(id));
+    }
+
+    @GetMapping("/page")
+    public String getPage(){
+        return "html/admin/admin.html";
+    }
 
     // 민영님 url 맞추기
     @RequestMapping("/register")
@@ -46,7 +76,7 @@ public class ProductController {
         System.out.println("productCategory : " + productCategory);
         System.out.println("productDescription : " + productDescription);
 
-        ItemsTO to = new ItemsTO();
+        ItemsTO to = new ItemsTO(productName);
         ItemClassificationTO icto = new ItemClassificationTO();
 
         try {
@@ -54,7 +84,6 @@ public class ProductController {
 
             icto.setId(productCategory);
             icto.setName(utils.getCategoryName(productCategory));
-            to.setName(productName);
             to.setDescription(productDescription);
             to.setPrice(productPrice);
             to.setCategory(icto);
@@ -77,4 +106,5 @@ public class ProductController {
         return flag;
 
     }
+
 }

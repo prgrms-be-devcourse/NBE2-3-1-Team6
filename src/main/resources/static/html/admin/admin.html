@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Tables</title>
+
+    <!-- Custom fonts for this template -->
+    <link href="../../css/admin/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/admin/sb-admin-2.min.css" rel="stylesheet">
+
+    <link href="../../css/admin/button.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="../../css/admin/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top" style="background-color: #BFA288;>
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content" style="background-color: #BFA288; color:#260101">
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <br>
+                    <p style="color:#260101; font-weight: 550;font-size: 40px">Xmas Shop 관리자 페이지</p>
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary" style="display: inline-block"><button onclick="getItems()">상품목록</button></h6>
+                                <h6 class="m-0 font-weight-bold text-primary" style="display: inline-block"><button onclick="getOrders()">주문목록</button></h6>
+                        </div>
+                        <div class="card-body" >
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>이름</th>
+                                            <th>가격</th>
+                                            <th>분류</th>
+                                            <th>수정</th>
+                                            <th>삭제</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <!--data들어오는 곳-->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+
+    <!--상품 조회하기-->
+    <script>
+        function getItems() {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "/items", true);
+
+            xhr.onreadystatechange = function () {
+                if(xhr.readyState === XMLHttpRequest.DONE){
+                if (xhr.status === 200) {
+                    const products = JSON.parse(xhr.response);
+                    let element =
+                        "<thead>\n" +
+                        "<tr>\n" +
+                        "<th>이름</th>\n" +
+                        "<th>가격</th>\n" +
+                        "<th>분류</th>\n" +
+                        "<th>수정</th>\n" +
+                        "<th>삭제</th>\n" +
+                        " </tr>\n" +
+                        "</thead>\n" +
+                        "<tbody>\n" ;
+                    products.forEach((el)=>{
+                        element +=
+                            '<tr>\n' +
+                            '<td>'+el.name+'</td>\n' +
+                            '<td>'+el.price+'</td>\n' +
+                            '<td>'+el.category+'</td>\n' +
+                            '<td><button class="blue" id=modifyItem>수정</button></td>\n' +
+                            '<td><button id=deleteItem class="red"  onclick="deleteItem(\'' + el.id  + '\')">삭제</button></td>\n' +
+                            '</tr>\n';
+                    })
+                    element +=  "</tbody>";
+                    element+='<button class="orange">상품 등록</button>';
+                    document.getElementById('dataTable').innerHTML = element
+                }
+            }};
+            xhr.send();
+        }
+    </script>
+
+    <!--주문 조회하기-->
+    <script>
+        function getOrders() {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "/orders", true);
+            xhr.onreadystatechange = function () {
+                if(xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        const products = JSON.parse(xhr.response);
+
+                        let element = "<thead>\n" +
+                            "<tr>\n" +
+                            "<th>고객 이름</th>\n" +
+                            "<th>고객 email</th>\n" +
+                            "<th>주소</th>\n" +
+                            "<th>우편번호</th>\n" +
+                            "<th>상품 이름</th>\n" +
+                            "<th>수량</th>\n" +
+                            "<th>주문 날짜</th>\n" +
+                            "<th>배송 시작 날짜</th>\n" +
+                            " </tr>\n" +
+                            "</thead>\n" +
+                            "<tbody>\n";
+                        products.forEach((el) => {
+                            element +=
+                                '<tr>\n' +
+                                '<td>' + el.name + '</td>\n' +
+                                '<td>' + el.email + '</td>\n' +
+                                '<td>' + el.address + '</td>\n' +
+                                '<td>' + el.zipcode + '</td>\n' +
+                                '<td>' + el.productName + '</td>\n' +
+                                '<td>' + el.quantity + '</td>\n' +
+                                '<td>' + el.orderDate + '</td>\n' +
+                                '<td>' + el.deliveryDate + '</td>\n' +
+                                '</tr>\n';
+                        })
+                        element += "</tbody>";
+                        document.getElementById('dataTable').innerHTML = element
+                    }
+                }
+            };
+            xhr.send();
+        }
+    </script>
+
+    <!--삭제시-->
+    <script>
+        function deleteItem(id){
+            console.log("함수 호출은 완료 : "+id)
+            const xhr = new XMLHttpRequest();
+
+            xhr.open("DELETE", "http://127.0.0.1:8080/items/"+id, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log("삭제 성공");
+                        getItems();
+                    } else {
+                        console.log("삭제 실패, 상태 코드: " + xhr.status);
+                    }
+                }
+            }
+            xhr.send();
+        }
+    </script>
+</body>
+
+</html>

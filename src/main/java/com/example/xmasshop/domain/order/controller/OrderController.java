@@ -1,12 +1,22 @@
 package com.example.xmasshop.domain.order.controller;
 
+import com.example.xmasshop.domain.order.dto.OrderResponseDto;
+import com.example.xmasshop.domain.order.service.OrderService;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
+@RequiredArgsConstructor
 @Controller
 public class OrderController {
+
+    private final OrderService orderService;
 
     @GetMapping("/")
     public String getMain() {
@@ -15,12 +25,17 @@ public class OrderController {
 
     @PostMapping("/")
     public String postMain(HttpServletRequest request) {
-
-        if (request.getParameter("pw").equals("1234")) {
+        if ("1234".equals(request.getParameter("pw"))) {
             // 관리자 페이지로 리다이렉트
             return "true";
         } else {
             return "false";
         }
+    }
+
+    @ResponseBody
+    @GetMapping("/orders")
+    public ResponseEntity<List<OrderResponseDto>> getOrders() {
+        return ResponseEntity.ok(orderService.getOrders());
     }
 }

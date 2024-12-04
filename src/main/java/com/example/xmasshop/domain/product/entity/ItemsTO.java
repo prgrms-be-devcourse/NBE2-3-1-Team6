@@ -11,8 +11,10 @@ import org.apache.ibatis.type.Alias;
 public class ItemsTO {
     Integer id;
     String name;
+    String description;
     ItemClassificationTO category;
     Integer price;
     String img_name;
-    String description;
+
+    public ItemsTO(String name){this.name=name;}
 }
