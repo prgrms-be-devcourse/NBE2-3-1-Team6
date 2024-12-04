@@ -1,0 +1,113 @@
+#cover {
+    box-sizing: border-box;
+
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    position: absolute;
+
+    z-index: 9;
+}
+
+#cover.-visible {
+    display: block;
+}
+
+#cover > .modal {
+    width: 300px;
+    top: 50%;
+    left: 50%;
+
+    background-color: white;
+    border-radius: 10px;
+
+    transform: translate(-50%, -50%);
+
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+
+}
+
+#cover > .modal > .title {
+    width: 100%;
+    color: #260101;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-bottom: 1px solid #bfa288;
+
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#cover > .modal > .text {
+    padding: 1rem;
+    color: #260101;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+#cover > .modal > label {
+    padding: 1rem;;
+}
+
+#cover > .modal > label > input {
+    border: 1px solid #bfa288aa;
+    color: #260101;
+    padding: 0.5rem;
+    outline: none;
+
+    font-size: 1rem;
+}
+
+#cover > .modal > label > input:focus-within {
+    border: 1px solid #bfa288ff;
+}
+
+#cover > .modal > .button-container {
+    width: 100%;
+
+
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#cover > .modal > .button-container > button {
+    width: 100%;
+
+    background-color: #bfa288ee;
+    border: none;
+    color: white;
+
+    padding: 0.5rem;
+
+    cursor: pointer;
+}
+
+#cover > .modal > .button-container > button:hover {
+    background-color: #bfa288ff;
+}
+
+#cover > .modal >.button-container > button:first-child {
+    border-right: 0.1rem solid #bdbdbd;
+    border-bottom-left-radius: 10px;
+}
+
+#cover > .modal >.button-container > button:last-child {
+    border-bottom-right-radius: 10px;
+}
