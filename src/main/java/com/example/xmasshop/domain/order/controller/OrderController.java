@@ -36,11 +36,16 @@ public class OrderController {
             return "false";
         }
     }
+
     @ResponseBody
     @GetMapping("/orders")
     public ResponseEntity<List<OrderResponseDto>> getOrders(){
         return ResponseEntity.ok(orderService.getOrders());
     }
 
+    @GetMapping("/list")
+    public String getList() {
+        return "html/order/order.html";
+    }
 }
 
