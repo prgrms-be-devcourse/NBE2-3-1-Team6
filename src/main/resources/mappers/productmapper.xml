@@ -2,4 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.xmasshop.domain.product.mapper.ProductMapper">
 
+    <resultMap id="Items" type="ItemsTo">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="price" property="price"/>
+        <result column="image_name" property="img_name"/>
+        <collection column="category" property="category" ofType="ItemClassificationTO" select="selectCategoryById"/>
+    </resultMap>
+
+    <select id="selectCategoryById" resultType="ItemClassificationTO">
+        select distinct * from category where id = #{id};
+    </select>
+
+    <select id="selectAll" resultMap="Items">
+        SELECT p.id,p.name,p.price,p.image_name,p.category FROM product p join category c on c.id = p.category;
+    </select>
+
+    <select id="selectOneItem" resultType="ItemsTO">
+        select * from product where id=#{id};
+    </select>
+
+    <delete id="deleteItem" parameterType="int">
+        DELETE from product where id=#{id} ;
+    </delete>
+
+
 </mapper>
