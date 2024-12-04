@@ -12,6 +12,7 @@ public class ProductRepository {
 
     @Autowired
     ProductMapper productMapper;
+
     public List<ItemsTO> findAllItems(){
         return productMapper.selectAll();
 

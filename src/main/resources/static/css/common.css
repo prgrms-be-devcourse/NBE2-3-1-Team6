@@ -228,7 +228,7 @@
 }
 
 #cover > .detail.xmas-modal > .main > .info-box > .quantity-box > label > input[type="number"] {
-    width: 2rem;
+    width: 4rem;
     font-size: 1rem;
     font-weight: 600;
     color: #260101;

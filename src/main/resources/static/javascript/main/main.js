@@ -16,6 +16,8 @@ adcbtn.onclick = () => {
                             const cancelModal = new ModalObj();
                             cancelModal.createSimpleButton('알림', '잘못된 비밀번호 입니다.');
                             cancelModal.show();
+                        } else {
+                            location.href = '/page';
                         }
                     } else {
                         alert("[에러] 페이지 오류(404, 500)");

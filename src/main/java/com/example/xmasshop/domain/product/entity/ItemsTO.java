@@ -2,19 +2,21 @@ package com.example.xmasshop.domain.product.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.apache.ibatis.type.Alias;
 
 // 상품 테이블
 @Alias( value = "itemsto" )
 @Getter
 @Setter
+@ToString
 public class ItemsTO {
-    Integer id;
-    String name;
-    String description;
-    ItemClassificationTO category;
-    Integer price;
-    String img_name;
+    private Integer id;
+    private String name;
+    private String description;
+    private ItemClassificationTO category;
+    private Integer price;
+    private String img_name;
 
     public ItemsTO(String name){this.name=name;}
 }

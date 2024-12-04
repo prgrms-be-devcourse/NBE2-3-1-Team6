@@ -106,25 +106,6 @@ body {
     color: rgb(109, 108, 108);
 }
 
-.add-to-cart {
-    display: block;
-    background-color: white;
-    border: 3px solid #8C1822;
-    color: #260101;
-    font-weight: 500;
-    padding: 7px 20px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 4px;
-    font-size: 15px;
-    transition: background-color 0.3s ease;
-}
-
-.add-to-cart:hover {
-    background-color: #8C1822;
-    color: white
-}
-
 .footer {
     color: rgb(255, 255, 255);
     text-align: end;
@@ -173,6 +154,31 @@ hr {
     border-bottom-right-radius: 1rem;
     padding: 4vh;
     color: rgb(65, 65, 65)
+}
+
+.summary > form > .row > h6 {
+    width: 100%;
+
+    align-items: center;
+    flex-direction: row;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.summary > form > .row > h6 > .spring {
+    flex : 1;
+}
+
+.summary > form > .row > h6 > button {
+    border: none;
+    background-color: inherit;
+
+    font-size: 0.6rem;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn{

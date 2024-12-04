@@ -11,12 +11,12 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class OrdersTO {
-    Integer id;
-    String customer;
-    String email;
-    String phone;
-    String address;
-    String zipcode;
-    LocalDateTime date;
+    private Integer id;
+    private String customer;
+    private String email;
+    private String phone;
+    private String address;
+    private String zipcode;
+    private LocalDateTime date;
 
 }

@@ -10,8 +10,8 @@ import org.apache.ibatis.type.Alias;
 @Getter
 @Setter
 public class OrderDetailTO {
-    Integer id;
-    OrdersTO order_id;
-    ItemsTO product_id;
-    Integer quantity;
+    private Integer id;
+    private OrdersTO order_id;
+    private ItemsTO product_id;
+    private Integer quantity;
 }

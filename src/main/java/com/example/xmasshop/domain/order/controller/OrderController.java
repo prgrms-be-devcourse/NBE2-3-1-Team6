@@ -3,6 +3,7 @@ package com.example.xmasshop.domain.order.controller;
 import com.example.xmasshop.domain.order.dto.OrderResponseDto;
 import com.example.xmasshop.domain.order.service.OrderService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,10 +28,11 @@ public class OrderController {
     }
 
     @PostMapping("/")
-    public String postMain(HttpServletRequest request) {
-
+    @ResponseBody
+    public String postMain(HttpServletRequest request,
+                           HttpSession session) {
         if (request.getParameter("pw").equals("1234")) {
-            // 여기서 관리자페이지 redirect 하기
+            session.setAttribute("admin", "T");
             return "true";
         } else {
             return "false";

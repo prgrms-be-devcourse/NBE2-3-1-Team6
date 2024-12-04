@@ -18,12 +18,15 @@
         SELECT p.id,p.name,p.price,p.image_name,p.category FROM product p join category c on c.id = p.category;
     </select>
 
-    <select id="selectOneItem" resultType="ItemsTO">
-        select * from product where id=#{id};
+    <select id="selectOneItem" resultMap="Items">
+        SELECT p.id, p.name, p.price, p.image_name, p.category, p.description
+        FROM product p
+                 join category c on c.id = p.category
+        where p.id = #{id};
     </select>
 
     <delete id="deleteItem" parameterType="int">
-        DELETE from product where id=#{id} ;
+        DELETE from product where id=#{id};
     </delete>
 
 
