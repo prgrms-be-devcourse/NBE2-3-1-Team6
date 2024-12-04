@@ -30,6 +30,10 @@
                         alert( '상품분류를 입력하셔야 합니다.' );
                         return false;
                     }
+                    if ( document.wfrm.productdescription.value == '' ) {
+                        alert( '상품설명을 입력하셔야 합니다.' );
+                        return false;
+                    }
                     if ( document.wfrm.productimage.value == '' ) {
                         alert( '상품이미지를 첨부하셔야 합니다.' );
                         return false;
@@ -334,6 +338,13 @@
                                                                     <option value="2">2: 인형</option>
                                                                     <option value="3">3: 리본</option>
                                                                 </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>상품설명</th>
+                                                            <td>
+                                                                <textarea name="productdescription" class="board_view_input"
+                                                                          placeholder="상품설명을 입력하세요." rows="5" cols="50"></textarea>
                                                             </td>
                                                         </tr>
                                                         <tr>

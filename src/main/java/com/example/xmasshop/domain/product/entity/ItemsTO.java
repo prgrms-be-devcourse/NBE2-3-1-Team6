@@ -14,4 +14,5 @@ public class ItemsTO {
     ItemClassificationTO category;
     Integer price;
     String img_name;
+    String description;
 }
