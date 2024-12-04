@@ -55,14 +55,18 @@ public class ProductController {
         return "html/admin/admin.html";
     }
 
-    // 민영님 url 맞추기
     @RequestMapping("/register")
     public String registerhtml() {
         System.out.println("registerhtml called");
         return "html/admin/register.html";
     }
 
-    // 민영님 url 맞추기
+    @RequestMapping("/modify")
+    public String modifyhtml() {
+        System.out.println("modifyhtml called");
+        return "html/admin/modify.html";
+    }
+
     @PostMapping("/items")
     @ResponseBody
     public int post(HttpServletRequest request) {
