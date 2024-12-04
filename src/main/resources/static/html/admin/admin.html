@@ -117,7 +117,7 @@
                             '</tr>\n';
                     })
                     element +=  "</tbody>";
-                    element+='<button class="orange">상품 등록</button>';
+                    element+='<button class="orange" onclick="location.href=\'/register\'" >상품 등록</button>';
                     document.getElementById('dataTable').innerHTML = element
                 }
             }};
@@ -175,8 +175,7 @@
         function deleteItem(id){
             console.log("함수 호출은 완료 : "+id)
             const xhr = new XMLHttpRequest();
-
-            xhr.open("DELETE", "http://127.0.0.1:8080/items/"+id, true);
+            xhr.open("DELETE", "/items/"+id, true);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
                     if (xhr.status === 200) {
