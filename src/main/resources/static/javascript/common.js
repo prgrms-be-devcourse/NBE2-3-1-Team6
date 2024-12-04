@@ -76,7 +76,8 @@ class ModalObj {
         this.cover.innerHTML = '';
 
         const productModal = new DOMParser().parseFromString(`
-        <div class="detail modal">
+            <div class="detail modal">
+                <input type="hidden" name="id" value="${id}">
                 <span class="title">상품 설명</span>
                 <div class="main">
                     <div class="img-box">
@@ -101,13 +102,32 @@ class ModalObj {
                                 <th>설명</th>
                                 <td>하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. </td>
                             </tr>
-                        </table>        
+                        </table>
+                        <div class="quantity-box">
+                            <button type="button" class="minus"><i class="fa-solid fa-minus"></i></button>
+                            <label>
+                                <input type="number" name="quantity" value="1">
+                            </label>
+                            <button type="button" class="plus"><i class="fa-solid fa-plus"></i></button>
+                        </div>        
                     </div>
                 </div>
                 <div class="button-container">
                 </div>
             </div>
         `,'text/html').querySelector('.modal');
+
+        const quantity = productModal.querySelector('input[name="quantity"]');
+
+        productModal.querySelector('button.minus').onclick = () => {
+            if (quantity.value !== "1") {
+                quantity.value = parseInt(quantity.value) - 1;
+            }
+        }
+
+        productModal.querySelector('button.plus').onclick = () => {
+            quantity.value = parseInt(quantity.value) + 1;
+        }
 
         const buttonContainer = productModal.querySelector('.button-container');
 
