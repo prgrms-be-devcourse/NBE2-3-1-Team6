@@ -27,12 +27,6 @@ public class OrderController {
         }
     }
 
-    @GetMapping("/products")
-    public String getItems(Model model) {
-//        model.addAttribute("lists")
-        return "html/order/product.html";
-    }
-
     @GetMapping("/orders")
     public String getOrders() {
         return "html/order/order.html";

@@ -1,53 +1,55 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XMAS SHOP</title>
     <link rel="stylesheet" type="text/css" href="../../css/order/order.css">
-    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../css/common.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-
-    <title>XMAS SHOP</title>
+    <script src="https://kit.fontawesome.com/5fcc17a7cc.js" crossorigin="anonymous"></script>
+    <script defer type="text/javascript" src="../../javascript/common.js"></script>
+    <script defer type="text/javascript" src="../../javascript/order/order.js"></script>
 </head>
-<body class="container-fluid">
-<div class="row justify-content-center m-4">
-    <h1 class="header-text-center">XMAS SHOP</h1>
-</div>
-<div class="card">
-    <div class="row">
-        <div class="col-md-8 mt-4 d-flex flex-column align-items-start p-4 pt-0">
-            <h5 class="flex-grow-0"><b>장바구니 목록</b></h5>
-            <ul class="list-group products">
-                <li class="list-group-item d-flex mt-3">
-                    <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/HKOFQYa.jpeg" alt=""></div>
-                    <div class="col">
-                        <div class="row text-muted">종 오너먼트</div>
-                        <div class="row">천사모양 종 오너먼트</div>
+<body>
+<header class="header">
+    <div class="header-logo">XMAS Shop</div>
+</header>
+<div class="top-container">
+    <div class="container">
+        <div class="left-container">
+            <div class="container-title">상품 목록</div>
+            <div class="cards">
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x200" alt="Product 1">
+                    <div class="card-content">
+                        <h3>Product 1</h3>
+                        <p>종 오너먼트</p>
                     </div>
-                    <div class="col text-center price">5000원</div>
-                    <div class="col text-end action"><a class="btn btn-small btn-outline-darkred" href="">추가</a></div>
-                </li>
-                <li class="list-group-item d-flex mt-2">
-                    <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/HKOFQYa.jpeg" alt=""></div>
-                    <div class="col">
-                        <div class="row text-muted">종 오너먼트</div>
-                        <div class="row">하얀 종 오너먼트</div>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x200" alt="Product 2">
+                    <div class="card-content">
+                        <h3>Product 2</h3>
+                        <p>종 오너먼트</p>
                     </div>
-                    <div class="col text-center price">5000원</div>
-                    <div class="col text-end action"><a class="btn btn-small btn-outline-darkred" href="">추가</a></div>
-                </li>
-                <li class="list-group-item d-flex mt-2">
-                    <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/HKOFQYa.jpeg" alt=""></div>
-                    <div class="col">
-                        <div class="row text-muted">종 오너먼트</div>
-                        <div class="row">금 종 오너먼트</div>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x200" alt="Product 3">
+                    <div class="card-content">
+                        <h3>Product 3</h3>
+                        <p>종 오너먼트</p>
                     </div>
-                    <div class="col text-center price">5000원</div>
-                    <div class="col text-end action"><a class="btn btn-small btn-outline-darkred" href="">추가</a></div>
-                </li>
-            </ul>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x200" alt="Product 4">
+                    <div class="card-content">
+                        <h3>Product 4</h3>
+                        <p>종 오너먼트</p>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-md-4 summary p-4">
             <div>
@@ -85,7 +87,9 @@
             <button class="btn-pay">결제하기</button>
         </div>
     </div>
+
+    <footer class="footer"><p>© 2024 Xmas Shop. Distributed by Team6</p></footer>
 </div>
-<footer class="footer"><p>© 2024 Xmas Shop. Distributed by Team6</p></footer>
 </body>
+
 </html>

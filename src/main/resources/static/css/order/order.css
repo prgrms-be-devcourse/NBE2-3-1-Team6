@@ -1,79 +1,141 @@
-
-
 body {
+    font-family: Arial, sans-serif;
+    background-color: #BFA288;
+    color: #260101;
+    margin: 0;
+    padding: 0;
 }
-.btn{
-    background-color: #8C1822;
+.top-container{
+    background-color: #BFA288;
 }
-.badge-box{
+.container {
+    background-color: #BFA288;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 60px;
+    padding-bottom: 35px;
+    display: flex;
+    justify-content: space-between;
+}
+.left-container{
+    width: 61%;
+}
+
+.container-title {
+    font-size: 1.75rem;
+    font-weight:700;
+    padding: 10px;
+    padding-bottom: 13px;
+    border-bottom: 2px solid #26010178;
+}
+
+
+.header {
     background-color: #8C1822;
+    color: white;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo {
+    font-size: 28px;
+    font-weight: bold;
+    font-family: Georgia;
+}
+
+.header-cart {
+    font-family: Georgia;
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #8C1822;
     border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.header-cart:hover {
+    cursor: pointer;
+    background-color: #ffffff;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+.cards {
+    padding-top:60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
 }
 
 .card {
-    margin: auto;
-    max-width: 950px;
-    width: 90%;
-    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 1rem;
-    border: transparent
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
 }
 
-.summary {
-    background-color: #ddd;
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    padding: 4vh;
-    color: rgb(65, 65, 65)
+.card:hover {
+    box-shadow: 0 7px 9px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
 }
 
-.container-fluid{
-    background-color: #BFA288;
-}
-
-.header-text-center{
-    font-family: Georgia;
-    font-size: 32px;
-    font-weight: bold;
-    color: #260101;
-    padding-top: 10px;
-}
-
-@media (max-width: 767px) {
-    .summary {
-        border-top-right-radius: unset;
-        border-bottom-left-radius: 1rem
-    }
-}
-
-.row {
-    margin: 0
-}
-
-.title b {
-    font-size: 1.5rem
-}
-
-.col-2,
-.col {
-    padding: 0 1vh
-}
-
-img {
-    width: 3.5rem
-}
-
-hr {
-    margin-top: 1.25rem
-}
-.products {
+.card img {
     width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
-.products .price, .products .action {
-    line-height: 38px;
+
+.card-content {
+    padding: 22px;
 }
-.products .action {
-    line-height: 38px;
+
+.card-content h3 {
+    margin-top: 0;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.card-content p {
+    margin-bottom: 20px;
+    color: rgb(109, 108, 108);
+}
+
+.add-to-cart {
+    display: block;
+    background-color: white;
+    border: 3px solid #8C1822;
+    color: #260101;
+    font-weight: 500;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background-color: #8C1822;
+    color: white
+}
+
+.footer {
+    color: rgb(255, 255, 255);
+    text-align: end;
+    padding-bottom: 20px;
+    padding-right: 30px;
+    font-size: 15px;
+}
+
+.badge-box{
+    background-color: #8C1822;
+    border-radius: 4px;
 }
 
 .btn-outline-darkred:hover{
@@ -97,13 +159,22 @@ hr {
     transition: background-color 0.3s ease;
 }
 
-.footer {
-    bottom: 0;
-    right: 20px;
+hr {
+    margin-top: 1.25rem
+}
 
-    color: rgb(255, 255, 255);
-    position: absolute;
-    text-align: right;
-    font-size: 15px;
+.col {
+    padding: 0 1vh
+}
 
+.summary {
+    background-color: #ddd;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding: 4vh;
+    color: rgb(65, 65, 65)
+}
+
+.btn{
+    background-color: #8C1822;
 }
