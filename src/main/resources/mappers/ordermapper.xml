@@ -19,4 +19,13 @@
         SELECT id, order_id, product_id, quantity FROM detail where order_id = #{id};
     </select>
 
+    <insert id="insertOrders" parameterType="OrdersTO">
+        insert into orders ( email, phone, customer,address, zipcode)
+        values (#{email}, #{phone}, #{customer}, #{address}, #{zipcode})
+    </insert>
+
+<!--    <insert id="insertDetailOrders" parameterType="orderdetailto">-->
+<!--        insert into detail (order_id, product_id, quantity)-->
+<!--        values ( #{order_id}, #{product_id}, #{quantity})-->
+<!--    </insert>-->
 </mapper>

@@ -12,4 +12,7 @@ public interface OrderMapper {
     List<OrdersTO> selectAllOrders();
 
     List<OrderDetailTO> selectOrderDetailsById(Integer id);
+
+    int insertOrders(OrdersTO ordersTO);
+//    int insertDetailOrders(OrderDetailTO orderDetailTO);
 }

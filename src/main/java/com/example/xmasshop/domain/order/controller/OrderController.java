@@ -1,6 +1,7 @@
 package com.example.xmasshop.domain.order.controller;
 
 import com.example.xmasshop.domain.order.dto.OrderResponseDto;
+import com.example.xmasshop.domain.order.entity.OrdersTO;
 import com.example.xmasshop.domain.order.service.OrderService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -48,6 +51,22 @@ public class OrderController {
     @GetMapping("/list")
     public String getList() {
         return "html/order/order.html";
+    }
+
+    @ResponseBody
+    @PostMapping("/pay")
+    public int pay(HttpServletRequest request) {
+        OrdersTO ordersTO = new OrdersTO();
+        ordersTO.setEmail(request.getParameter("email"));
+        ordersTO.setPhone(request.getParameter("phone"));
+        ordersTO.setCustomer(request.getParameter("customer"));
+        ordersTO.setAddress(request.getParameter("address"));
+        ordersTO.setZipcode(request.getParameter("zipcode"));
+        ordersTO.setDate(LocalDateTime.now());
+
+        int flag = orderService.insertOrders(ordersTO);
+
+        return flag;
     }
 }
 

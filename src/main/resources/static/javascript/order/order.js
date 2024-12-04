@@ -122,3 +122,57 @@ const setSummaryPrice = () => {
     document.querySelector('.text-end').innerText = allPrice.toLocaleString('ko-KR') + "원";
 }
 
+document.getElementById('pay').onclick = function () {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            if ((xhr.status == 200) && (xhr.responseText == "1")) {
+                alert("결제가 성공적으로 처리되었습니다.");
+            } else {
+                alert( "결제 요청 중 오류가 발생했습니다." );
+            }
+        }
+    }
+    xhr.open( "POST", "/pay", true );
+    xhr.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+    let customer = document.getElementById("name").value;
+    let address = document.getElementById("address").value;
+    let zipcode = document.getElementById("postcode").value;
+
+    // 이메일 유효성 검사 (정규 표현식)
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert("유효하지 않은 이메일 주소입니다.");
+        return; // 요청 중단
+    }
+
+    // 전화번호 유효성 검사 (숫자만)
+    const phoneRegex = /^[0-9]{10,15}$/; // 10~15자리 숫자
+    if (!phoneRegex.test(phone)) {
+        alert("유효하지 않은 전화번호입니다. 숫자만 입력하세요.");
+        return; // 요청 중단
+    }
+
+    // 이름 빈 값 확인
+    if (customer.trim() === "") {
+        alert("이름을 입력하셔야합니다.");
+        return; // 요청 중단
+    }
+
+    // 주소 빈 값 확인
+    if (address.trim() === "") {
+        alert("주소를 입력하셔야합니다.");
+        return; // 요청 중단
+    }
+
+    // 우편번호 유효성 검사 (숫자만)
+    const zipcodeRegex = /^[0-9]{5,6}$/; // 5~6자리 숫자
+    if (!zipcodeRegex.test(zipcode)) {
+        alert("유효하지 않은 우편번호입니다. 5~6자리 숫자만 입력하세요.");
+        return; // 요청 중단
+    }
+
+    xhr.send( 'email='+email+'&phone='+phone+'&customer='+customer+'&address='+address+'&zipcode='+zipcode+'' );
+}

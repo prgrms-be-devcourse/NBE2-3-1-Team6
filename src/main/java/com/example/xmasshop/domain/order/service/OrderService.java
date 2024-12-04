@@ -36,4 +36,8 @@ public class OrderService {
 
     }
 
+    public int insertOrders(OrdersTO ordersTO){
+        return orderRepository.insertOrders(ordersTO);
+    }
+
 }
