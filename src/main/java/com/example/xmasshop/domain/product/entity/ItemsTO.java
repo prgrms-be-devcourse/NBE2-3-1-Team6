@@ -9,4 +9,9 @@ import org.apache.ibatis.type.Alias;
 @Getter
 @Setter
 public class ItemsTO {
+    Integer id;
+    String name;
+    ItemClassificationTO category;
+    Integer price;
+    String img_name;
 }

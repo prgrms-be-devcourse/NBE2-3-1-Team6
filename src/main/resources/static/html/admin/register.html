@@ -11,6 +11,61 @@
 
     <title>SB Admin 2 - Tables</title>
 
+    <script type="text/javascript">
+        window.onload = function () {
+                document.getElementById('wbtn').onclick = function () {
+
+                    // 1. 사용자 입력값 검사
+                    if ( document.wfrm.productname.value == '' ) {
+                        alert( '상품명을 입력하셔야 합니다.' );
+                        return false;
+                    }
+
+                    if ( document.wfrm.productprice.value == '' ) {
+                        alert( '상품가격을 입력하셔야 합니다.' );
+                        return false;
+                    }
+
+                    if ( document.wfrm.productcategory.value == '' ) {
+                        alert( '상품분류를 입력하셔야 합니다.' );
+                        return false;
+                    }
+                    if ( document.wfrm.productimage.value == '' ) {
+                        alert( '상품이미지를 첨부하셔야 합니다.' );
+                        return false;
+                    }
+
+                    // 2. 비동기방식으로 데이터 전송
+                    const formData = new FormData(document.forms['wfrm']);
+                    const request = new XMLHttpRequest();
+                    request.onreadystatechange = function () {
+                        if ( request.readyState == 4 ) {
+                            if ( request.status == 200 ) {
+                                //디버깅
+                                console.log( request.responseText );
+
+                                if(request.responseText == 1){
+                                    alert("상품등록성공");
+                                    location.href='html/admin/admin.html';
+                                }
+                                else{
+                                    alert("상품등록실패");
+                                }
+                                }
+                            else {
+                                alert( "[에러] 페이지 오류(404, 500)" );
+                            }
+                        }
+                    }
+                request.open( "POST", "/items", true );
+                // formdata로 전송(Content-Type 자동 설정)
+                request.send(formData);
+            };
+        };
+    </script>
+
+
+
     <!-- Custom fonts for this template -->
     <link href="../../css/admin/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -257,9 +312,9 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <form action="write_ok.do" method="post" name="wfrm" enctype="multipart/form-data">
+                                        <form name="wfrm">
                                             <div class="contents_sub">
-                                                <div class="product_registration">
+                                                <div class="contents_sub">
                                                     <table>
                                                         <tr>
                                                             <th class="top">상품명</th>
@@ -284,7 +339,7 @@
                                                         <tr>
                                                             <th>상품이미지</th>
                                                             <td>
-                                                                <input type="file" name="upload" value="" />
+                                                                <input type="file" name="productimage" value="" />
                                                             </td>
                                                         </tr>
                                                     </table>
