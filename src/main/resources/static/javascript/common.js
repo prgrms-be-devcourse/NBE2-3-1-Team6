@@ -22,13 +22,13 @@ class ModalObj {
 
         const modal = new DOMParser().parseFromString(
             `
-            <div class="modal">
+            <div class="xmas-modal">
                 <span class="title">${title}</span>
                 <span class="text">${text}</span>
                 <div class="button-container">
                 </div>
             </div>
-            `,'text/html').querySelector('.modal');
+            `,'text/html').querySelector('.xmas-modal');
 
         const buttonContainer = modal.querySelector('.button-container');
 
@@ -45,7 +45,7 @@ class ModalObj {
 
         const modal = new DOMParser().parseFromString(
             `
-            <div class="modal">
+            <div class="xmas-modal">
                 <span class="title">${title}</span>
                     <label>
                         <input type="password" id="pw" name="pw">
@@ -53,7 +53,7 @@ class ModalObj {
                 <div class="button-container">
                 </div>
             </div>
-            `,'text/html').querySelector('.modal');
+            `,'text/html').querySelector('.xmas-modal');
 
         const buttonContainer = modal.querySelector('.button-container');
 
@@ -76,7 +76,7 @@ class ModalObj {
         this.cover.innerHTML = '';
 
         const productModal = new DOMParser().parseFromString(`
-            <div class="detail modal">
+            <div class="detail xmas-modal">
                 <input type="hidden" name="id" value="${id}">
                 <span class="title">상품 설명</span>
                 <div class="main">
@@ -87,20 +87,20 @@ class ModalObj {
                         <span class="info-text">상품 상세 정보</span>
                         <table class="info-table">
                             <tr>
-                                <th>이름</th>
-                                <td>하얀 종 오너먼트</td>
+                                <th class="subject">이름</th>
+                                <td class="text">하얀 종 오너먼트</td>
                             </tr>
                             <tr>
-                                <th>분류</th>
-                                <td>종</td>
+                                <th class="subject">분류</th>
+                                <td class="text">종</td>
                             </tr>
                             <tr>
-                                <th>가격</th>
-                                <td>2000</td>
+                                <th class="subject">가격</th>
+                                <td class="text">2000</td>
                             </tr>
                             <tr>
-                                <th>설명</th>
-                                <td>하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. </td>
+                                <th class="subject">설명</th>
+                                <td class="text">하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. 하얀 종입니다. </td>
                             </tr>
                         </table>
                         <div class="quantity-box">
@@ -115,7 +115,7 @@ class ModalObj {
                 <div class="button-container">
                 </div>
             </div>
-        `,'text/html').querySelector('.modal');
+        `,'text/html').querySelector('.xmas-modal');
 
         const quantity = productModal.querySelector('input[name="quantity"]');
 

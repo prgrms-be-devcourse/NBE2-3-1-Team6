@@ -16,7 +16,7 @@
     display: block;
 }
 
-#cover > .modal {
+#cover > .xmas-modal {
     width: 300px;
     top: 50%;
     left: 50%;
@@ -38,7 +38,7 @@
 
 }
 
-#cover > .modal > .title {
+#cover > .xmas-modal > .title {
     width: 100%;
     color: #260101;
     padding: 1rem;
@@ -52,18 +52,18 @@
     justify-content: center;
 }
 
-#cover > .modal > .text {
+#cover > .xmas-modal > .text {
     padding: 1rem;
     color: #260101;
     font-size: 1rem;
     font-weight: 300;
 }
 
-#cover > .modal > label {
+#cover > .xmas-modal > label {
     padding: 1rem;;
 }
 
-#cover > .modal > label > input {
+#cover > .xmas-modal > label > input {
     border: 1px solid #bfa288aa;
     color: #260101;
     padding: 0.5rem;
@@ -72,11 +72,11 @@
     font-size: 1rem;
 }
 
-#cover > .modal > label > input:focus-within {
+#cover > .xmas-modal > label > input:focus-within {
     border: 1px solid #bfa288ff;
 }
 
-#cover > .modal > .button-container {
+#cover > .xmas-modal > .button-container {
     width: 100%;
 
     display: flex;
@@ -85,7 +85,7 @@
     justify-content: space-between;
 }
 
-#cover > .modal > .button-container > button {
+#cover > .xmas-modal > .button-container > button {
     width: 100%;
 
     background-color: #bfa288ee;
@@ -99,26 +99,25 @@
     cursor: pointer;
 }
 
-#cover > .modal > .button-container > button:hover {
+#cover > .xmas-modal > .button-container > button:hover {
     background-color: #bfa288ff;
 }
 
-#cover > .modal >.button-container > button:first-child {
+#cover > .xmas-modal >.button-container > button:first-child {
     border-right: 0.1rem solid #bdbdbd;
     border-bottom-left-radius: 10px;
 }
 
-#cover > .modal >.button-container > button:last-child {
+#cover > .xmas-modal >.button-container > button:last-child {
     border-bottom-right-radius: 10px;
 }
 
-#cover > .detail.modal {
+#cover > .detail.xmas-modal {
     width: 800px;
 }
 
-#cover > .detail.modal > .main {
+#cover > .detail.xmas-modal > .main {
     width: 100%;
-    height: 100%;
     box-sizing: border-box;
 
     padding: 1rem;
@@ -128,12 +127,13 @@
     flex-direction: row;
 }
 
-#cover > .detail.modal > .main > .img-box{
+#cover > .detail.xmas-modal > .main > .img-box{
     box-sizing: border-box;
 
     padding: 1rem;
 
     width: 300px;
+    height: 400px;
     overflow: hidden;
 
     object-fit: cover;
@@ -144,13 +144,14 @@
     justify-content: center;
 }
 
-#cover > .detail.modal > .main > .img-box > img{
+#cover > .detail.xmas-modal > .main > .img-box > img{
     width: 300px;
+    height: 400px;
     box-sizing: border-box;
 
 }
 
-#cover > .detail.modal > .main > .info-box{
+#cover > .detail.xmas-modal > .main > .info-box{
     flex: 1;
     width: 50%;
     padding: 1rem;
@@ -162,30 +163,31 @@
     flex-direction: column;
 }
 
-#cover > .detail.modal > .main > .info-box > .info-text {
+#cover > .detail.xmas-modal > .main > .info-box > .info-text {
     width: 100%;
     padding-bottom: 1rem;
 
+    color: #260101;
     font-size: 1rem;
     font-weight: 600;
 
     border-bottom: 1px solid #BFA288;
 }
 
-#cover > .detail.modal > .main > .info-box > .info-table th{
-    width: 2rem;
+#cover > .detail.xmas-modal > .main > .info-box > .info-table th.subject{
+    width: 3rem;
     text-align: left;
     padding: 0.5rem;
 }
 
-#cover > .detail.modal > .main > .info-box > .info-table td{
+#cover > .detail.xmas-modal > .main > .info-box > .info-table td.text{
     text-align: left;
     padding: 0.5rem;
 
     display: flex;
 }
 
-#cover > .detail.modal > .main > .info-box > .quantity-box {
+#cover > .detail.xmas-modal > .main > .info-box > .quantity-box {
 
     width: 100%;
 
@@ -196,7 +198,7 @@
     justify-content: center;
 }
 
-#cover > .detail.modal > .main > .info-box > .quantity-box > button{
+#cover > .detail.xmas-modal > .main > .info-box > .quantity-box > button{
     width: 2rem;
     height: 2rem;
 
@@ -211,21 +213,21 @@
     justify-content: center;
 }
 
-#cover > .detail.modal > .main > .info-box > .quantity-box > button:hover {
+#cover > .detail.xmas-modal > .main > .info-box > .quantity-box > button:hover {
     background-color: #BFA288;
 }
 
-#cover > .detail.modal > .main > .info-box > .quantity-box > label {
+#cover > .detail.xmas-modal > .main > .info-box > .quantity-box > label {
     border: 1px solid #bdbdbd;
 
 }
 
-#cover > .detail.modal > .main > .info-box > .quantity-box > label:focus-within {
+#cover > .detail.xmas-modal > .main > .info-box > .quantity-box > label:focus-within {
     border: 1px solid #BFA288;
 
 }
 
-#cover > .detail.modal > .main > .info-box > .quantity-box > label > input[type="number"] {
+#cover > .detail.xmas-modal > .main > .info-box > .quantity-box > label > input[type="number"] {
     width: 2rem;
     font-size: 1rem;
     font-weight: 600;
@@ -237,8 +239,8 @@
     padding: 0.5rem;
 }
 
-#cover > .detail.modal > .main > .info-box > .quantity-box input[type="number"]::-webkit-outer-spin-button,
-#cover > .detail.modal > .main > .info-box > .quantity-box input[type="number"]::-webkit-inner-spin-button {
+#cover > .detail.xmas-modal > .main > .info-box > .quantity-box input[type="number"]::-webkit-outer-spin-button,
+#cover > .detail.xmas-modal > .main > .info-box > .quantity-box input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
