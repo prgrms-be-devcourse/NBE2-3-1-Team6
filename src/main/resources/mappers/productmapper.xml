@@ -9,6 +9,9 @@
         select id, name
         from category
     </select>
-
+    <insert id="insertProduct" parameterType="itemsto" >
+        insert into product (id, name, description, price, category, image_name)
+        values (0, #{name}, #{description}, #{price}, #{category.id}, #{img_name})
+    </insert>
 
 </mapper>

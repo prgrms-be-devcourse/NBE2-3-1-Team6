@@ -2,10 +2,14 @@ package com.example.xmasshop.domain.product.controller;
 
 import com.example.xmasshop.domain.product.entity.ItemClassificationTO;
 import com.example.xmasshop.domain.product.entity.ItemsTO;
+import com.example.xmasshop.domain.product.repository.ProductRepository;
+import com.example.xmasshop.util.product.Utils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.Part;
+import java.io.File;
 import java.io.IOException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +19,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ProductController {
 
+    @Autowired
+    Utils utils;
+
+    @Autowired
+    ProductRepository productRepository;
+
     // 민영님 url 맞추기
-    @RequestMapping("/")
+    @RequestMapping("/register")
     public String registerhtml() {
         System.out.println("registerhtml called");
         return "html/admin/register.html";
@@ -36,36 +46,35 @@ public class ProductController {
         System.out.println("productCategory : " + productCategory);
         System.out.println("productDescription : " + productDescription);
 
+        ItemsTO to = new ItemsTO();
+        ItemClassificationTO icto = new ItemClassificationTO();
+
         try {
             Part filePart = request.getPart("productimage");
-            System.out.println("productimage: "+ filePart.getSubmittedFileName());
-            ItemsTO to = new ItemsTO();
-            ItemClassificationTO icto = new ItemClassificationTO();
 
             icto.setId(productCategory);
-            // productCategory에 맞는 name을 반환
-//            icto.setName()
-
+            icto.setName(utils.getCategoryName(productCategory));
+            to.setName(productName);
+            to.setDescription(productDescription);
+            to.setPrice(productPrice);
             to.setCategory(icto);
+            to.setImg_name(filePart.getSubmittedFileName());
+
+            // 업로드 파일 저장
+            // 업로드 경로 설정
+            String uploadPath = "C:\\Java\\TeamProjects\\xmasShop\\src\\main\\resources\\static\\imgs";
+            String filePath = uploadPath+ File.separator+ filePart.getSubmittedFileName();
+            filePart.write(filePath);
+
         } catch (IOException e) {
             System.out.println("[IO에러]"+e.getMessage());
         } catch (ServletException e) {
             System.out.println("[Servelet에러]"+e.getMessage());
         }
 
-//        ItemsTO to = new ItemsTO();
-//        to.setId( request.getParameter("empno") );
-//        to.setEname( request.getParameter("ename") );
-//        to.setJob( request.getParameter("job") );
-//        to.setMgr( request.getParameter("mgr") );
-//        to.setHiredate( request.getParameter("hiredate") );
-//        to.setSal( request.getParameter("sal") );
-//        to.setComm( request.getParameter("comm") );
-//        to.setDeptno( request.getParameter("deptno") );
-//
-//        int flag = empDAO.insert( to );
-//
-//        return flag;
-        return 0;
+        int flag = productRepository.insertProduct(to);
+
+        return flag;
+
     }
 }
