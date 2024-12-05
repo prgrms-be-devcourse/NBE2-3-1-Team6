@@ -33,5 +33,5 @@ adcbtn.onclick = () => {
         onclick : () => mainModal.remove()
     }]);
 
-    mainModal.show();
+    document.querySelector('input[name="pw"]').select();
 }
