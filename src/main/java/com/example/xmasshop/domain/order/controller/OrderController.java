@@ -55,7 +55,10 @@ public class OrderController {
 
     @ResponseBody
     @PostMapping("/pay")
-    public int pay(HttpServletRequest request) {
+    public boolean pay(HttpServletRequest request) {
+
+        boolean result = false;
+
         OrdersTO ordersTO = new OrdersTO();
         ordersTO.setEmail(request.getParameter("email"));
         ordersTO.setPhone(request.getParameter("phone"));
@@ -64,9 +67,21 @@ public class OrderController {
         ordersTO.setZipcode(request.getParameter("zipcode"));
         ordersTO.setDate(LocalDateTime.now());
 
-        int flag = orderService.insertOrders(ordersTO);
+        System.out.println(request.getParameter("detailList"));
 
-        return flag;
+
+
+        /*
+
+        int flag = orderService.insertOrders(ordersTO);
+        if (flag == 1) {
+            result = true;
+        }
+
+         */
+
+
+        return result;
     }
 }
 

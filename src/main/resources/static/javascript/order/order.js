@@ -126,20 +126,44 @@ document.getElementById('pay').onclick = function () {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
-            if ((xhr.status == 200) && (xhr.responseText == "1")) {
-                alert("결제가 성공적으로 처리되었습니다.");
+            if ((xhr.status == 200) && (xhr.responseText == "true")) {
+                const payModal = new ModalObj();
+                payModal.createSimpleButton('알림', '결제가 성공적으로 처리되었습니다.');
             } else {
-                alert( "결제 요청 중 오류가 발생했습니다." );
+                const payModal = new ModalObj();
+                payModal.createSimpleButton('알림', '결제 요청 중 오류가 발생했습니다.');
             }
         }
     }
     xhr.open( "POST", "/pay", true );
     xhr.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
+
+    const rows = sfrm.querySelectorAll('.row');
     let email = document.getElementById("email").value;
     let phone = document.getElementById("phone").value;
     let customer = document.getElementById("name").value;
     let address = document.getElementById("address").value;
     let zipcode = document.getElementById("postcode").value;
+
+    if (rows === null) {
+        alert("선택하신 주문 목록이 존재하지 않습니다.");
+        return; // 요청 중단
+    }
+
+    const detailList = [];
+
+    for (let row of rows) {
+        const detail = {
+            product_id : row.querySelector('input[name="id"]').value,
+            quantity : row.querySelector('input[name="quantity"]').value
+        }
+
+        detailList.push(detail);
+    }
+
+    console.log(detailList);
+
+    /*
 
     // 이메일 유효성 검사 (정규 표현식)
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -174,5 +198,9 @@ document.getElementById('pay').onclick = function () {
         return; // 요청 중단
     }
 
-    xhr.send( 'email='+email+'&phone='+phone+'&customer='+customer+'&address='+address+'&zipcode='+zipcode+'' );
+     */
+
+
+
+    xhr.send( 'email='+email+'&phone='+phone+'&customer='+customer+'&address='+address+'&zipcode='+zipcode+'&detailList='+detailList);
 }
