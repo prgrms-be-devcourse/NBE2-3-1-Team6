@@ -32,7 +32,7 @@ public class OrderController {
 
     @GetMapping("/")
     public String getMain() {
-        return "html/main.html";
+        return "forward:html/main.html";
     }
 
     @PostMapping("/")
@@ -55,7 +55,7 @@ public class OrderController {
 
     @GetMapping("/list")
     public String getList() {
-        return "html/order/order.html";
+        return "forward:html/order/order.html";
     }
 
     @ResponseBody
