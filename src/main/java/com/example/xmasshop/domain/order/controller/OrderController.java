@@ -4,6 +4,7 @@ import com.example.xmasshop.domain.order.dto.OrderResponseDto;
 import com.example.xmasshop.domain.order.entity.OrderDetailTO;
 import com.example.xmasshop.domain.order.entity.OrdersTO;
 import com.example.xmasshop.domain.order.service.OrderService;
+import com.example.xmasshop.domain.product.entity.ItemsTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -59,9 +60,8 @@ public class OrderController {
 
     @ResponseBody
     @PostMapping("/pay")
-    public boolean pay(@RequestBody Map<String, Object> requestBody) {
+    public ResponseEntity<Map<String, Object>> pay(@RequestBody Map<String, Object> requestBody) {
 
-        boolean result = false;
 
         String email = (String) requestBody.get("email");
         String phone = (String) requestBody.get("phone");
@@ -78,34 +78,24 @@ public class OrderController {
         ordersTO.setAddress(address);
         ordersTO.setZipcode(zipcode);
 
-        // detailList를 OrderDetailTO로 변환
         List<OrderDetailTO> orderDetails = detailList.stream().map(detail -> {
             OrderDetailTO detailTO = new OrderDetailTO();
 
-//            detailTO.setProduct_id(Integer.parseInt((String) detail.get("product_id")));
-//
-//            // quantity 처리
-//            detailTO.setQuantity(Integer.parseInt((String) detail.get("quantity"))); // 문자열을 정수로 변환
-//
-//            // order_id 설정
-//            detailTO.setOrder_id(ordersTO); // OrdersTO 객체 참조 설정
+            ItemsTO itemsTO = new ItemsTO();
+            itemsTO.setId(Integer.parseInt((String) detail.get("product_id")));
+            detailTO.setProduct_id(itemsTO);
 
-            System.out.println("product_id: "+Integer.parseInt((String) detail.get("product_id")));
-            System.out.println("quantity "+Integer.parseInt((String) detail.get("quantity")));
+            detailTO.setQuantity(Integer.parseInt((String) detail.get("quantity")));
+
+            detailTO.setOrder_id(ordersTO);
+
             return detailTO;
         }).collect(Collectors.toList());
 
-        /*
-
-        int flag = orderService.insertOrders(ordersTO);
-        if (flag == 1) {
-            result = true;
-        }
-
-         */
-
-
-        return result;
+        int result = orderService.saveOrder(ordersTO, orderDetails);
+        Map<String, Object> response = new HashMap<>();
+        response.put("success", (result > 0));
+        return ResponseEntity.ok(response);
     }
 }
 

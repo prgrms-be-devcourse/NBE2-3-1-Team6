@@ -19,13 +19,13 @@
         SELECT id, order_id, product_id, quantity FROM detail where order_id = #{id};
     </select>
 
-    <insert id="insertOrders" parameterType="OrdersTO">
+    <insert id="insertOrders" parameterType="OrdersTO" useGeneratedKeys="true" keyProperty = "id">
         insert into orders ( email, phone, customer,address, zipcode)
         values (#{email}, #{phone}, #{customer}, #{address}, #{zipcode})
     </insert>
 
-<!--    <insert id="insertDetailOrders" parameterType="orderdetailto">-->
-<!--        insert into detail (order_id, product_id, quantity)-->
-<!--        values ( #{order_id}, #{product_id}, #{quantity})-->
-<!--    </insert>-->
+    <insert id="insertDetailOrders" parameterType="orderdetailto">
+        insert into detail (order_id, product_id, quantity)
+        values ( #{order_id.id}, #{product_id.id}, #{quantity})
+    </insert>
 </mapper>

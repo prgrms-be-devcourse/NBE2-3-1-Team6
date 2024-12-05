@@ -18,5 +18,6 @@ public class ItemsTO {
     private Integer price;
     private String img_name;
 
+    public ItemsTO() {}
     public ItemsTO(String name){this.name=name;}
 }
