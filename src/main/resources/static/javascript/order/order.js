@@ -136,7 +136,7 @@ document.getElementById('pay').onclick = function () {
         }
     }
     xhr.open( "POST", "/pay", true );
-    xhr.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
+    xhr.setRequestHeader( 'Content-Type', 'application/json' );
 
     const rows = sfrm.querySelectorAll('.row');
     let email = document.getElementById("email").value;
@@ -160,7 +160,14 @@ document.getElementById('pay').onclick = function () {
 
         detailList.push(detail);
     }
-
+    const data = {
+        email: email,
+        phone: phone,
+        customer: customer,
+        address: address,
+        zipcode: zipcode,
+        detailList: detailList
+    };
     console.log(detailList);
 
     /*
@@ -201,6 +208,6 @@ document.getElementById('pay').onclick = function () {
      */
 
 
+    xhr.send(JSON.stringify(data));
 
-    xhr.send( 'email='+email+'&phone='+phone+'&customer='+customer+'&address='+address+'&zipcode='+zipcode+'&detailList='+detailList);
 }

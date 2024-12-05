@@ -1,6 +1,7 @@
 package com.example.xmasshop.domain.order.controller;
 
 import com.example.xmasshop.domain.order.dto.OrderResponseDto;
+import com.example.xmasshop.domain.order.entity.OrderDetailTO;
 import com.example.xmasshop.domain.order.entity.OrdersTO;
 import com.example.xmasshop.domain.order.service.OrderService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,10 +12,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Controller
@@ -55,21 +59,41 @@ public class OrderController {
 
     @ResponseBody
     @PostMapping("/pay")
-    public boolean pay(HttpServletRequest request) {
+    public boolean pay(@RequestBody Map<String, Object> requestBody) {
 
         boolean result = false;
 
+        String email = (String) requestBody.get("email");
+        String phone = (String) requestBody.get("phone");
+        String customer = (String) requestBody.get("customer");
+        String address = (String) requestBody.get("address");
+        String zipcode = (String) requestBody.get("zipcode");
+        List<Map<String, Object>> detailList = (List<Map<String, Object>>) requestBody.get("detailList");
+
+        // OrdersTO 생성
         OrdersTO ordersTO = new OrdersTO();
-        ordersTO.setEmail(request.getParameter("email"));
-        ordersTO.setPhone(request.getParameter("phone"));
-        ordersTO.setCustomer(request.getParameter("customer"));
-        ordersTO.setAddress(request.getParameter("address"));
-        ordersTO.setZipcode(request.getParameter("zipcode"));
-        ordersTO.setDate(LocalDateTime.now());
+        ordersTO.setEmail(email);
+        ordersTO.setPhone(phone);
+        ordersTO.setCustomer(customer);
+        ordersTO.setAddress(address);
+        ordersTO.setZipcode(zipcode);
 
-        System.out.println(request.getParameter("detailList"));
+        // detailList를 OrderDetailTO로 변환
+        List<OrderDetailTO> orderDetails = detailList.stream().map(detail -> {
+            OrderDetailTO detailTO = new OrderDetailTO();
 
+//            detailTO.setProduct_id(Integer.parseInt((String) detail.get("product_id")));
+//
+//            // quantity 처리
+//            detailTO.setQuantity(Integer.parseInt((String) detail.get("quantity"))); // 문자열을 정수로 변환
+//
+//            // order_id 설정
+//            detailTO.setOrder_id(ordersTO); // OrdersTO 객체 참조 설정
 
+            System.out.println("product_id: "+Integer.parseInt((String) detail.get("product_id")));
+            System.out.println("quantity "+Integer.parseInt((String) detail.get("quantity")));
+            return detailTO;
+        }).collect(Collectors.toList());
 
         /*
 
