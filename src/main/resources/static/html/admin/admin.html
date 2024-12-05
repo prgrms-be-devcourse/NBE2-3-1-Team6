@@ -27,7 +27,7 @@
 
 </head>
 
-<body id="page-top" style="background-color: #BFA288";>
+<body id="page-top" style="background-color: #BFA288;">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -112,12 +112,12 @@
                             '<td>'+el.name+'</td>\n' +
                             '<td>'+el.price+'</td>\n' +
                             '<td>'+el.category+'</td>\n' +
-                            '<td><button class="blue" id=modifyItem onclick="location.href=\'/modify/'+el.id+'\'">수정</button></td>\n' +
+                            '<td><button class="blue" id=modifyItem>수정</button></td>\n' +
                             '<td><button id=deleteItem class="red"  onclick="deleteItem(\'' + el.id  + '\')">삭제</button></td>\n' +
                             '</tr>\n';
                     })
                     element +=  "</tbody>";
-                    element+='<button class="orange" onclick="location.href=\'/register\'" >상품 등록</button>';
+                    element+='<button class="orange">상품 등록</button>';
                     document.getElementById('dataTable').innerHTML = element
                 }
             }};
@@ -175,7 +175,8 @@
         function deleteItem(id){
             console.log("함수 호출은 완료 : "+id)
             const xhr = new XMLHttpRequest();
-            xhr.open("DELETE", "/items/"+id, true);
+
+            xhr.open("DELETE", "http://127.0.0.1:8080/items/"+id, true);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
                     if (xhr.status === 200) {

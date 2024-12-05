@@ -36,4 +36,16 @@ public class OrderService {
 
     }
 
+    public int saveOrder(OrdersTO ordersTO, List<OrderDetailTO> orderDetails) {
+        int flag = 0;
+
+        orderRepository.insertOrders(ordersTO);
+
+        for (OrderDetailTO detail : orderDetails) {
+            detail.setOrder_id(ordersTO);
+            flag = orderRepository.insertDetailOrders(detail);
+        }
+        return flag;
+    }
+
 }

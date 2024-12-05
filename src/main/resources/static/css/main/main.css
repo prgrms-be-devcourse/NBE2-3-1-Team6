@@ -12,7 +12,7 @@ body {
 
 .box {
     width: 500px;
-    height: 300px;
+    height: 350px;
 
     top: 50%;
     left: 50%;
@@ -36,6 +36,8 @@ body {
 
 .box > .box-header {
     width: 100%;
+
+    margin-bottom: 1rem;
 
     display: flex;
     flex-direction: row;
@@ -63,6 +65,7 @@ body {
 }
 
 .box > a {
+    margin-top: 2.5rem;
 
     text-decoration: unset;
     width: 60%;
@@ -82,4 +85,12 @@ body {
 
 .box > a:hover {
     background-color: #bfa288ff;
+}
+
+.footer {
+    color: white;
+    bottom: 10px;
+    right: 10px;
+
+    position: absolute;
 }

@@ -10,6 +10,6 @@ import org.apache.ibatis.type.Alias;
 @Getter
 @Setter
 public class ItemClassificationTO {
-    Integer id;
-    String name;
+    private Integer id;
+    private String name;
 }

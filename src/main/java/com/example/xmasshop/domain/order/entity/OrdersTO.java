@@ -2,6 +2,7 @@ package com.example.xmasshop.domain.order.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.apache.ibatis.type.Alias;
 
 import java.time.LocalDateTime;
@@ -10,13 +11,14 @@ import java.time.LocalDateTime;
 @Alias( value = "ordersto" )
 @Getter
 @Setter
+@ToString
 public class OrdersTO {
-    Integer id;
-    String customer;
-    String email;
-    String phone;
-    String address;
-    String zipcode;
-    LocalDateTime date;
+    private Integer id;
+    private String customer;
+    private String email;
+    private String phone;
+    private String address;
+    private String zipcode;
+    private LocalDateTime date;
 
 }

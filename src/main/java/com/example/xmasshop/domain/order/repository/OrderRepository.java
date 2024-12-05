@@ -25,4 +25,7 @@ public class OrderRepository {
         return orderMapper.selectOrderDetailsById(id);
     }
 
+    public int insertOrders(OrdersTO ordersTO){return orderMapper.insertOrders(ordersTO); }
+
+    public int insertDetailOrders(OrderDetailTO orderDetailTO){ return orderMapper.insertDetailOrders(orderDetailTO); }
 }

@@ -17,8 +17,13 @@ public class ProductService {
 
     @Autowired
     private final ProductRepository productRepository;
+
     public List<ItemResponseDto> getAllItems(){
         return productRepository.findAllItems().stream().map(ItemResponseDto::from).collect(Collectors.toList());
+    }
+
+    public ItemResponseDto getItem(int id) {
+        return ItemResponseDto.from(productRepository.findOneItemById(id));
     }
 
     public void deleteItem(Integer id){

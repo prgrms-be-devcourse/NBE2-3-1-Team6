@@ -47,6 +47,12 @@ public class ProductController {
     }
 
     @ResponseBody
+    @GetMapping("/items/{id}")
+    public ResponseEntity<ItemResponseDto> getItem(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok(productService.getItem(id));
+    }
+
+    @ResponseBody
     @DeleteMapping("/items/{id}")
     public ResponseEntity<String> deleteItem(@PathVariable("id") Integer id){
         productService.deleteItem(id);

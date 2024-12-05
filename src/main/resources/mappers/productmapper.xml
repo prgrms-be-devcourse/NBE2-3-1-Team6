@@ -44,7 +44,7 @@
     </select>
 
     <delete id="deleteItem" parameterType="int">
-        DELETE from product where id=#{id} ;
+        DELETE from product where id=#{id};
     </delete>
 
 

@@ -1,10 +1,8 @@
 package com.example.xmasshop.domain.product.dto;
 
-import com.example.xmasshop.domain.product.entity.ItemClassificationTO;
 import com.example.xmasshop.domain.product.entity.ItemsTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Getter
 @AllArgsConstructor
