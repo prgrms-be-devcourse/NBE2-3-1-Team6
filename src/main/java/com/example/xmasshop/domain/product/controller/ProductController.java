@@ -49,7 +49,6 @@ public class ProductController {
     @ResponseBody
     @DeleteMapping("/items/{id}")
     public ResponseEntity<String> deleteItem(@PathVariable("id") Integer id){
-        System.out.println(id);
         productService.deleteItem(id);
         return ResponseEntity.ok(String.valueOf(id));
     }
@@ -61,14 +60,11 @@ public class ProductController {
 
     @RequestMapping("/register")
     public String registerhtml() {
-        System.out.println("registerhtml called");
         return "forward:/html/admin/register.html";
     }
 
     @RequestMapping("/modify/{id}")
     public String modifyhtml(@PathVariable("id") String id, Model model) {
-        System.out.println("id:"+id);
-        System.out.println("modifyhtml called");
 
         ItemsTO itemsto = productRepository.findOneItemById(Integer.parseInt(id));
         CategoryIdDto categoryIdDto = CategoryIdDto.from(itemsto);
@@ -89,11 +85,6 @@ public class ProductController {
         int productPrice = Integer.parseInt(request.getParameter("productprice"));
         int productCategory = Integer.parseInt(request.getParameter("productcategory"));
         String productDescription = request.getParameter("productdescription");
-        System.out.println("productName : " + productName);
-        System.out.println("productPrice : " + productPrice);
-        System.out.println("productCategory : " + productCategory);
-        System.out.println("productDescription : " + productDescription);
-
 
         ItemsTO to = new ItemsTO(productName);
         ItemClassificationTO icto = new ItemClassificationTO();
@@ -149,7 +140,7 @@ public class ProductController {
     @ResponseBody
     public int put(@PathVariable("id") Integer id, HttpServletRequest request) {
 
-        System.out.println("putmapping id: "+ id);
+
         int productId = id;
         String productName = request.getParameter("productname");
         int productPrice = Integer.parseInt(request.getParameter("productprice"));
@@ -157,12 +148,6 @@ public class ProductController {
         String productDescription = request.getParameter("productdescription");
         String oldFileName = request.getParameter("oldFileName");
         int flag = 0;
-        System.out.println("productId : " + productId);
-        System.out.println("productName : " + productName);
-        System.out.println("productPrice : " + productPrice);
-        System.out.println("productCategory : " + productCategory);
-        System.out.println("productDescription : " + productDescription);
-        System.out.println("oldFileName : " + oldFileName);
 
         ItemsTO to = new ItemsTO(productName);
         ItemClassificationTO icto = new ItemClassificationTO();
@@ -189,24 +174,16 @@ public class ProductController {
                 // 사용자가 파일을 새로운 파일을 업로드한 겨우
                 // -> 기존 파일 업로드 파일 폴더에서 삭제후
                 // -> 새로운 파일 업로드 파일 폴더에 올리고 데이터베이스 img name 수정
-                System.out.println("file exists");
 
                 // 파일명 중복방지
                 String tempName = newFileName.substring(0, newFileName.lastIndexOf("."));
                 String ext = newFileName.substring(newFileName.lastIndexOf("."));
                 newFileName = tempName +"_"+System.nanoTime()+ ext;
 
-                System.out.println("tempName: "+ tempName);
-                System.out.println("ext: "+ ext);
-                System.out.println("newFileName: "+ newFileName);
-
-
                 // 업로드 파일 저장
                 // 업로드 경로 설정
                 String basePath = System.getProperty("user.dir");
                 String uploadPath = basePath+"\\src\\main\\resources\\static\\imgs";
-                System.out.println(basePath);
-                System.out.println(uploadPath);
 
                 // 업로드 경로가 존재하지 않는 경우 생성
                 File uploadDir = new File(uploadPath);
@@ -237,7 +214,6 @@ public class ProductController {
             System.out.println("[Servelet에러]"+e.getMessage());
         }
 
-        System.out.println("flag: " + flag);
         return flag;
     }
 

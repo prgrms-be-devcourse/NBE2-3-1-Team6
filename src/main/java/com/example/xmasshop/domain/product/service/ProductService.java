@@ -25,9 +25,4 @@ public class ProductService {
         productRepository.deleteItem(id);
     }
 
-//    public List<CategoryIdDto> getCategoryIdItems(){
-//        return productRepository.findAllItems().stream().map(CategoryIdDto::from).collect(Collectors.toList());
-//    }
-
-
 }
