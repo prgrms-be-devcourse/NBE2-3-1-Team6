@@ -14,15 +14,27 @@
     <script type="text/javascript">
         window.onload = function () {
             document.getElementById('mbtn').onclick = function () {
+                const allowedExtensions = ['.jpg', '.jpeg', '.png'];
+                const fileName = document.mfrm.productimage.value.toLowerCase();
+                const isValidExtension = allowedExtensions.some(extension => fileName.endsWith(extension));
 
                 // 1. 사용자 입력값 검사
                 if ( document.mfrm.productname.value == '' ) {
                     alert( '상품명을 입력하셔야 합니다.' );
                     return false;
                 }
+                if ( document.mfrm.productname.value.length>12) {
+                    alert( '상품명은 12자 이내로 적어주세요.' );
+                    return false;
+                }
 
                 if ( document.mfrm.productprice.value == '' ) {
                     alert( '상품가격을 입력하셔야 합니다.' );
+                    return false;
+                }
+
+                if ( document.mfrm.productprice.value<0) {
+                    alert( '상품가격은 0보다 작을 수 없습니다.' );
                     return false;
                 }
 
@@ -32,6 +44,15 @@
                 }
                 if ( document.mfrm.productdescription.value == '' ) {
                     alert( '상품설명을 입력하셔야 합니다.' );
+                    return false;
+                }
+                if ( document.mfrm.productdescription.value.length>12) {
+                    alert( '상품설명은 100자 이내로 적어주세요.' );
+                    return false;
+                }
+
+                if (!fileName == '' && !isValidExtension ) {
+                    alert('상품이미지는 .jpg, .jpeg, .png 파일만 첨부 가능합니다.');
                     return false;
                 }
 
@@ -108,7 +129,7 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <tbody>
-                                    <form name="mfrm">
+                                    <form name="mfrm" accept-charset="utf-8">
                                         <input type="hidden" name="productid" th:value="${categoryIdDto.id}"/>
                                         <div class="contents_sub">
                                             <div class="contents_sub">
@@ -121,7 +142,8 @@
                                                     </tr>
                                                     <tr>
                                                         <th>상품가격</th>
-                                                        <td><input type="text" name="productprice" value="" class="board_view_input" th:value="${categoryIdDto.price}" /></td>
+                                                        <td><input type="text" name="productprice" value="" class="board_view_input" th:value="${categoryIdDto.price}" />
+                                                        <span>원</span></td>
                                                     </tr>
                                                     <tr>
                                                         <th>상품분류</th>
@@ -137,13 +159,13 @@
                                                                 <option value="3"
                                                                         th:selected="${categoryIdDto.categoryId==3}">3:
                                                                     리본</option>
+                                                            </select>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                     <th>상품설명</th>
                                                         <td>
-                                                                <textarea name="productdescription" class="board_view_input"
-                                                                          th:text="${categoryIdDto.description}" rows="5" cols="50"></textarea>
+                                                                <textarea name="productdescription" class="board_view_input" th:text="${categoryIdDto.description}" rows="5" cols="50"></textarea>
                                                         </td>
                                                     </tr>
                                                     <tr>

@@ -14,15 +14,26 @@
     <script type="text/javascript">
         window.onload = function () {
                 document.getElementById('wbtn').onclick = function () {
+                    const allowedExtensions = ['.jpg', '.jpeg', '.png'];
+                    const fileName = document.wfrm.productimage.value.toLowerCase();
+                    const isValidExtension = allowedExtensions.some(extension => fileName.endsWith(extension));
 
                     // 1. 사용자 입력값 검사
                     if ( document.wfrm.productname.value == '' ) {
                         alert( '상품명을 입력하셔야 합니다.' );
                         return false;
                     }
+                    if ( document.wfrm.productname.value.length>12) {
+                        alert( '상품명은 12자 이내로 적어주세요.' );
+                        return false;
+                    }
 
                     if ( document.wfrm.productprice.value == '' ) {
                         alert( '상품가격을 입력하셔야 합니다.' );
+                        return false;
+                    }
+                    if ( document.wfrm.productprice.value<0) {
+                        alert( '상품가격은 0보다 작을 수 없습니다.' );
                         return false;
                     }
 
@@ -34,10 +45,20 @@
                         alert( '상품설명을 입력하셔야 합니다.' );
                         return false;
                     }
-                    if ( document.wfrm.productimage.value == '' ) {
+                    if ( document.wfrm.productdescription.value.length>12) {
+                        alert( '상품설명은 100자 이내로 적어주세요.' );
+                        return false;
+                    }
+                    if ( fileName == '' ) {
                         alert( '상품이미지를 첨부하셔야 합니다.' );
                         return false;
                     }
+
+                    if (!isValidExtension ) {
+                        alert('상품이미지는 .jpg, .jpeg, .png 파일만 첨부 가능합니다.');
+                        return false;
+                    }
+
 
                     // 2. 비동기방식으로 데이터 전송
                     const formData = new FormData(document.forms['wfrm']);
@@ -111,7 +132,7 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <tbody>
-                                    <form name="wfrm">
+                                    <form name="wfrm" accept-charset="utf-8">
                                             <div class="contents_sub">
                                                 <div class="contents_sub">
                                                     <table class="table table-bordered" width="100%" cellspacing="0" >
@@ -123,7 +144,8 @@
                                                         </tr>
                                                         <tr>
                                                             <th>상품가격</th>
-                                                            <td><input type="text" name="productprice" value="" class="board_view_input" placeholder="상품가격을 입력하세요." /></td>
+                                                            <td><input type="text" name="productprice" value="" class="board_view_input" placeholder="상품가격을 입력하세요." />
+                                                                <span>원</span></td>
                                                         </tr>
                                                         <tr>
                                                             <th>상품분류</th>
