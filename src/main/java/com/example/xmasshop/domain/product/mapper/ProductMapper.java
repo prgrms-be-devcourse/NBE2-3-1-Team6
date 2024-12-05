@@ -11,7 +11,8 @@ import java.util.List;
 public interface ProductMapper {
     ArrayList<ItemClassificationTO> categoryAll();
     int insertProduct(ItemsTO itemsTO);
-
+    int updateProductOldImage(ItemsTO itemsTO);
+    int updateProductNewImage(ItemsTO itemsTO);
     List<ItemsTO> selectAll();
 
     void deleteItem(Integer id);

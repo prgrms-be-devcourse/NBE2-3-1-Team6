@@ -23,6 +23,14 @@ public class ProductRepository {
         return productMapper.insertProduct(itemsTO);
     }
 
+    public int updateProductOldImage(ItemsTO itemsTO) {
+        return productMapper.updateProductOldImage(itemsTO);
+    }
+
+    public int updateProductNewImage(ItemsTO itemsTO) {
+        return productMapper.updateProductNewImage(itemsTO);
+    }
+
     public List<ItemsTO> findAllItems(){
         return productMapper.selectAll();
 

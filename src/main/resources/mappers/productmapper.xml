@@ -11,6 +11,18 @@
         values (0, #{name}, #{description}, #{price}, #{category.id}, #{img_name})
     </insert>
 
+    <insert id="updateProductOldImage" parameterType="itemsto" >
+        update product
+        set name=#{name}, description=#{description}, price=#{price}, category=#{category.id}
+        where id=#{id}
+    </insert>
+
+    <insert id="updateProductNewImage" parameterType="itemsto" >
+        update product
+        set name=#{name}, description=#{description}, price=#{price}, category=#{category.id}, image_name=#{img_name}
+        where id=#{id}
+    </insert>
+
     <resultMap id="Items" type="ItemsTo">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
@@ -27,8 +39,8 @@
         SELECT p.id,p.name,p.price,p.image_name,p.category FROM product p join category c on c.id = p.category;
     </select>
 
-    <select id="selectOneItem" resultType="ItemsTO">
-        select * from product where id=#{id};
+    <select id="selectOneItem" resultMap="Items">
+        SELECT p.id,p.name,p.price,p.image_name, p.description, p.category FROM product p join category c on c.id = p.category where p.id=#{id};
     </select>
 
     <delete id="deleteItem" parameterType="int">

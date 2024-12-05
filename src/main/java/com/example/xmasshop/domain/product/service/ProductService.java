@@ -1,5 +1,6 @@
 package com.example.xmasshop.domain.product.service;
 
+import com.example.xmasshop.domain.product.dto.CategoryIdDto;
 import com.example.xmasshop.domain.product.dto.ItemResponseDto;
 import com.example.xmasshop.domain.product.entity.ItemsTO;
 import com.example.xmasshop.domain.product.repository.ProductRepository;
@@ -23,5 +24,10 @@ public class ProductService {
     public void deleteItem(Integer id){
         productRepository.deleteItem(id);
     }
+
+//    public List<CategoryIdDto> getCategoryIdItems(){
+//        return productRepository.findAllItems().stream().map(CategoryIdDto::from).collect(Collectors.toList());
+//    }
+
 
 }
