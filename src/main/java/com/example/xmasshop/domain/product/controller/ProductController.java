@@ -63,8 +63,6 @@ public class ProductController {
     @GetMapping("/page")
     public String getPage(HttpSession session){
 
-        System.out.println(session.getAttribute("admin"));
-
         if (session.getAttribute("admin") == null) {
             return "forward:/html/error/error.html";
         }
