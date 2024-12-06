@@ -4,7 +4,8 @@
 
 
     <select id="selectAllOrders" resultType="OrdersTO">
-        SELECT * FROM orders;
+        SELECT * FROM orders
+        order by id desc
     </select>
 
     <resultMap id="orderDetail" type="OrderDetailTo">
@@ -12,11 +13,12 @@
     </resultMap>
 
     <select id="selectOneItem" resultType="ItemsTO">
-        select * from product where id=#{id};
+        select * from product where id=#{id}
     </select>
 
     <select id="selectOrderDetailsById" resultMap="orderDetail">
-        SELECT id, order_id, product_id, quantity FROM detail where order_id = #{id};
+        SELECT id, order_id, product_id, quantity FROM detail where order_id = #{id}
+        order by id desc
     </select>
 
     <insert id="insertOrders" parameterType="OrdersTO" useGeneratedKeys="true" keyProperty = "id">

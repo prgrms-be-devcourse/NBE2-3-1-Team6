@@ -1,0 +1,26 @@
+input[type="text"],
+textarea,
+select {
+    padding: 0.5rem;
+    border: 1px solid #bdbdbd;
+    outline: none;
+}
+
+
+input[type="text"]:focus-within,
+textarea:focus-within,
+select:focus-within {
+    border: 1px solid #BFA288;
+}
+
+select,
+input[type="file"]{
+    cursor: pointer;
+}
+
+.price-td {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}

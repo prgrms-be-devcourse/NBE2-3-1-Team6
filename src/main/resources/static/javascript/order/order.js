@@ -123,18 +123,17 @@ const setSummaryPrice = () => {
 }
 
 document.getElementById('pay').onclick = function () {
+    const payModal = new ModalObj();
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
-                const payModal = new ModalObj();
                 payModal.createModal('알림', '결제가 성공적으로 처리되었습니다.', [{
                     title : '닫기',
                     onclick : () => location.reload()
                 }]);
 
             } else {
-                const payModal = new ModalObj();
                 payModal.createSimpleButton('알림', '결제 요청 중 오류가 발생했습니다.');
             }
         }
@@ -150,7 +149,6 @@ document.getElementById('pay').onclick = function () {
     let zipcode = document.getElementById("postcode").value;
 
     if (rows.length === 0) {
-        const payModal = new ModalObj();
         payModal.createSimpleButton('알림', '선택하신 주문 목록이 존재하지 않습니다.');
         return;
     }
@@ -178,7 +176,6 @@ document.getElementById('pay').onclick = function () {
     // 이메일 유효성 검사 (정규 표현식)
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-        const payModal = new ModalObj();
         payModal.createSimpleButton('알림', '유효하지 않은 이메일 주소입니다.');
         return;
     }
@@ -186,21 +183,18 @@ document.getElementById('pay').onclick = function () {
     // 전화번호 유효성 검사 (숫자만)
     const phoneRegex = /^[0-9]{10,15}$/; // 10~15자리 숫자
     if (!phoneRegex.test(phone)) {
-        const payModal = new ModalObj();
         payModal.createSimpleButton('알림', '유효하지 않은 전화번호입니다. 숫자만 입력하세요.');
         return;
     }
 
     // 이름 빈 값 확인
     if (customer.trim() === "") {
-        const payModal = new ModalObj();
         payModal.createSimpleButton('알림', '이름을 입력하셔야합니다.');
         return;
     }
 
     // 주소 빈 값 확인
     if (address.trim() === "") {
-        const payModal = new ModalObj();
         payModal.createSimpleButton('알림', '주소를 입력하셔야합니다.');
         return;
     }
@@ -208,7 +202,6 @@ document.getElementById('pay').onclick = function () {
     // 우편번호 유효성 검사 (숫자만)
     const zipcodeRegex = /^[0-9]{5,6}$/; // 5~6자리 숫자
     if (!zipcodeRegex.test(zipcode)) {
-        const payModal = new ModalObj();
         payModal.createSimpleButton('알림', '유효하지 않은 우편번호입니다. 5~6자리 숫자만 입력하세요.');
         return;
     }

@@ -1,4 +1,8 @@
-body {
+html {
+    height: 100vh;
+}
+
+#body {
     font-family: Arial, sans-serif;
     background-color: #BFA288;
     color: #260101;
@@ -114,14 +118,6 @@ body {
     color: rgb(109, 108, 108);
 }
 
-.footer {
-    color: rgb(255, 255, 255);
-    text-align: end;
-    padding-bottom: 20px;
-    padding-right: 30px;
-    font-size: 15px;
-}
-
 .badge-box{
     background-color: #8C1822;
     border-radius: 4px;
@@ -157,11 +153,12 @@ hr {
 }
 
 .summary {
+    height: fit-content;
     background-color: #ddd;
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
     padding: 4vh;
-    color: rgb(65, 65, 65)
+    color: rgb(65, 65, 65);
 }
 
 .summary > form > .row > h6 {

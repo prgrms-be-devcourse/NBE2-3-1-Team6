@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>SB Admin 2 - Tables</title>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css">
+    <script defer type="text/javascript" src="../../javascript/common.js"></script>
 
     <!-- Custom fonts for this template -->
     <link href="../../css/admin/all.min.css" rel="stylesheet" type="text/css">
@@ -24,7 +25,6 @@
 
     <!-- Custom styles for this page -->
     <link href="../../css/admin/dataTables.bootstrap4.min.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top" style="background-color: #BFA288;">
@@ -67,7 +67,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <!-- /.container-fluid -->
 
@@ -83,7 +82,6 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
 
     <!--상품 조회하기-->
     <script>
@@ -117,7 +115,7 @@
                             '</tr>\n';
                     })
                     element +=  "</tbody>";
-                    element+='<button class="orange" onclick="location.href=\'/register\'" >상품 등록</button>';
+                    element+='<button class="orange" style="margin-top: 0.5rem" onclick="location.href=\'/register\'" >상품 등록</button>';
                     document.getElementById('dataTable').innerHTML = element
                 }
             }};
@@ -173,23 +171,39 @@
     <!--삭제시-->
     <script>
         function deleteItem(id){
-            console.log("함수 호출은 완료 : "+id)
-            const xhr = new XMLHttpRequest();
-
-            xhr.open("DELETE", "/items/"+id, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        console.log("삭제 성공");
-                        getItems();
-                    } else {
-                        console.log("삭제 실패, 상태 코드: " + xhr.status);
+            const deleteModal = new ModalObj();
+            deleteModal.createModal('알림', '정말로 상품을 삭제하시겠습니까?', [{
+                title : '확인',
+                onclick : () => {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open("DELETE", "/items/"+id, true);
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === XMLHttpRequest.DONE) {
+                            if (xhr.status === 200) {
+                                deleteModal.createModal('알림', '삭제에 성공하셨습니다.', [{
+                                    title : '확인',
+                                    onclick : () => {
+                                        deleteModal.remove();
+                                        getItems();
+                                    }
+                                }]);
+                            } else {
+                                deleteModal.createSimpleButton('알림', '알 수 없는 이유로 삭제에 실패하였습니다.');
+                            }
+                        }
                     }
+                    xhr.send();
                 }
-            }
-            xhr.send();
+            }, {
+                title : '닫기',
+                onclick : () => deleteModal.remove()
+            }])
+        }
+
+        window.onload = () => {
+            getItems();
         }
     </script>
+    <footer class="footer"><p>© 2024 Xmas Shop. Distributed by Team6</p></footer>
 </body>
-
 </html>

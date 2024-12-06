@@ -5,6 +5,7 @@ import com.example.xmasshop.domain.product.dto.ItemResponseDto;
 import com.example.xmasshop.domain.product.service.ProductService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -60,17 +61,43 @@ public class ProductController {
     }
 
     @GetMapping("/page")
-    public String getPage(){
+    public String getPage(HttpSession session){
+
+        System.out.println(session.getAttribute("admin"));
+
+        if (session.getAttribute("admin") == null) {
+            return "forward:/html/error/error.html";
+        }
+        if (!(session.getAttribute("admin").equals("T"))) {
+            return "forward:/html/error/error.html";
+        }
+
         return "forward:/html/admin/admin.html";
     }
 
     @RequestMapping("/register")
-    public String registerhtml() {
+    public String registerhtml(HttpSession session) {
+
+        if (session.getAttribute("admin") == null) {
+            return "forward:/html/error/error.html";
+        }
+        if (!(session.getAttribute("admin").equals("T"))) {
+            return "forward:/html/error/error.html";
+        }
+
         return "forward:/html/admin/register.html";
     }
 
     @RequestMapping("/modify/{id}")
-    public String modifyhtml(@PathVariable("id") String id, Model model) {
+    public String modifyhtml(@PathVariable("id") String id, Model model, HttpSession session) {
+
+        if (session.getAttribute("admin") == null) {
+            return "forward:/html/error/error.html";
+        }
+
+        if (!(session.getAttribute("admin").equals("T"))) {
+            return "forward:/html/error/error.html";
+        }
 
         ItemsTO itemsto = productRepository.findOneItemById(Integer.parseInt(id));
         CategoryIdDto categoryIdDto = CategoryIdDto.from(itemsto);
@@ -145,7 +172,6 @@ public class ProductController {
     @PutMapping("/items/{id}")
     @ResponseBody
     public int put(@PathVariable("id") Integer id, HttpServletRequest request) {
-
 
         int productId = id;
         String productName = request.getParameter("productname");

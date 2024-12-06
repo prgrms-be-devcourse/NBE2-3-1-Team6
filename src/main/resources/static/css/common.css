@@ -17,7 +17,7 @@
 }
 
 #cover > .xmas-modal {
-    width: 300px;
+    width: 400px;
     top: 50%;
     left: 50%;
 
@@ -243,4 +243,14 @@
 #cover > .detail.xmas-modal > .main > .info-box > .quantity-box input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+.footer {
+    color: white;
+    padding: 0.5rem 1.5rem;
+    text-align: right;
 }
