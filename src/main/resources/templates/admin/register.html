@@ -54,7 +54,7 @@
                         failModal.createSimpleButton('알림', '상품설명을 입력하셔야 합니다.');
                         return false;
                     }
-                    if ( document.wfrm.productdescription.value.length>12) {
+                    if ( document.wfrm.productdescription.value.length>100) {
                         const failModal = new ModalObj();
                         failModal.createSimpleButton('알림', '상품설명은 100자 이내로 적어주세요.');
                         return false;
