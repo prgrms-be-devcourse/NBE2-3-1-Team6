@@ -10,10 +10,10 @@
     <meta name="author" content="">
 
     <title>SB Admin 2 - Tables</title>
-    <link rel="stylesheet" type="text/css" href="../../css/admin/input.text.css">
-    <link rel="stylesheet" type="text/css" href="../../css/common.css">
-    <link type="text/css" href="../../css/admin/button.css" rel="stylesheet">
-    <script defer type="text/javascript" src="../../javascript/common.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/admin/input.text.css">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    <link type="text/css" href="/css/admin/button.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/javascript/common.js"></script>
     <script type="text/javascript">
         window.onload = function () {
                 document.getElementById('wbtn').onclick = function () {
@@ -106,22 +106,22 @@
 
 
     <!-- Custom fonts for this template -->
-    <link href="../../css/admin/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/admin/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../../css/admin/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/css/admin/sb-admin-2.min.css" rel="stylesheet">
 
-    <link href="../../css/admin/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/css/admin/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="../../css/admin/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="/css/admin/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
-<body id="page-top" style="background-color: #BFA288";>
+<body id="page-top" style="background-color: #BFA288">
 
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -167,9 +167,10 @@
                                                             <th>상품분류</th>
                                                             <td>
                                                                 <select name="productcategory">
-                                                                    <option value="1">1: 종</option>
-                                                                    <option value="2">2: 인형</option>
-                                                                    <option value="3">3: 리본</option>
+                                                                    <option th:each="category : ${icto}"
+                                                                            th:value="${category.id}"
+                                                                            th:text="${category.name}">
+                                                                    </option>
                                                                 </select>
                                                             </td>
                                                         </tr>
@@ -209,8 +210,9 @@
         </div>
         <!-- End of Content Wrapper -->
 
-    <footer class="footer" style="position: absolute; bottom: 0; right: 10px"><p>© 2024 Xmas Shop. Distributed by Team6</p></footer>
+    <footer class="footer" style="position: relative; margin-top:5px; text-align:right"><p>© 2024 Xmas Shop. Distributed by Team6</p></footer>
     </div>
+
     <!-- End of Page Wrapper -->
 </body>
 

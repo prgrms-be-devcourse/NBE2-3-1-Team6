@@ -10,10 +10,10 @@
     <meta name="author" content="">
 
     <title>SB Admin 2 - Tables</title>
-    <link rel="stylesheet" type="text/css" href="../../css/admin/input.text.css">
-    <link rel="stylesheet" type="text/css" href="../../css/common.css">
-    <link type="text/css" href="../../css/admin/button.css" rel="stylesheet">
-    <script defer type="text/javascript" src="../../javascript/common.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/admin/input.text.css">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    <link type="text/css" href="/css/admin/button.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/javascript/common.js"></script>
     <script type="text/javascript">
         window.onload = function () {
             document.getElementById('mbtn').onclick = function () {
@@ -116,7 +116,7 @@
 
 </head>
 
-<body id="page-top" style="background-color: #BFA288";>
+<body id="page-top" style="background-color: #BFA288">
 
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -160,16 +160,11 @@
                                                     <th>상품분류</th>
                                                     <td>
                                                         <select name="productcategory">
-                                                            th:selected="${itemsto.category.id==1}"
-                                                            <option value="1"
-                                                                    th:selected="${categoryIdDto.categoryId==1}">1:
-                                                                종</option>
-                                                            <option value="2"
-                                                                    th:selected="${categoryIdDto.categoryId==2}">2:
-                                                                인형</option>
-                                                            <option value="3"
-                                                                    th:selected="${categoryIdDto.categoryId==3}">3:
-                                                                리본</option>
+                                                            <option th:each="category : ${icto}"
+                                                                    th:value="${category.id}"
+                                                                    th:text="${category.name}"
+                                                                    th:selected="${category.id == categoryIdDto.categoryId}">
+                                                            </option>
                                                         </select>
                                                     </td>
                                                 </tr>
@@ -207,10 +202,9 @@
         <!-- End of Main Content -->
     </div>
     <!-- End of Content Wrapper -->
-
+    <footer class="footer" style="position: relative; margin-top:5px; text-align:right"><p>© 2024 Xmas Shop. Distributed by Team6</p></footer>
 </div>
 <!-- End of Page Wrapper -->
-<footer class="footer" style="position: absolute; bottom: 0; right: 10px"><p>© 2024 Xmas Shop. Distributed by Team6</p></footer>
 </body>
 
 </html>

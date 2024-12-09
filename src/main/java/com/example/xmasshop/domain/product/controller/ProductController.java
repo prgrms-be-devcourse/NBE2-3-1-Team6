@@ -5,6 +5,7 @@ import com.example.xmasshop.domain.product.dto.ItemResponseDto;
 import com.example.xmasshop.domain.product.service.ProductService;
 
 import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -73,7 +74,7 @@ public class ProductController {
     }
 
     @RequestMapping("/register")
-    public String registerhtml(HttpSession session) {
+    public String registerhtml(HttpSession session, Model model) {
 
         if (session.getAttribute("admin") == null) {
             return "forward:/html/error/error.html";
@@ -82,7 +83,11 @@ public class ProductController {
             return "forward:/html/error/error.html";
         }
 
-        return "forward:/html/admin/register.html";
+        List<ItemClassificationTO> icto = productRepository.categoryAll();
+
+        model.addAttribute("icto", icto);
+
+        return "/admin/register";
     }
 
     @RequestMapping("/modify/{id}")
@@ -99,6 +104,9 @@ public class ProductController {
         ItemsTO itemsto = productRepository.findOneItemById(Integer.parseInt(id));
         CategoryIdDto categoryIdDto = CategoryIdDto.from(itemsto);
 
+        List<ItemClassificationTO> icto = productRepository.categoryAll();
+
+        model.addAttribute("icto", icto);
         model.addAttribute("categoryIdDto", categoryIdDto);
 
         return "/admin/modify";
