@@ -3,7 +3,6 @@ package com.example.xmasshop.domain.product.controller;
 import com.example.xmasshop.domain.product.dto.CategoryIdDto;
 import com.example.xmasshop.domain.product.dto.ItemResponseDto;
 import com.example.xmasshop.domain.product.service.ProductService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -104,9 +103,6 @@ public class ProductController {
 
         return "/admin/modify";
     }
-
-
-
 
     @PostMapping("/items")
     @ResponseBody

@@ -22,7 +22,7 @@ public class OrderRepository {
     }
 
     public List<OrderDetailTO> getOrderDetails(Integer id){
-        return orderMapper.selectOrderDetailsById(id);
+            return orderMapper.selectOrderDetailsById(id);
     }
 
     public int insertOrders(OrdersTO ordersTO){return orderMapper.insertOrders(ordersTO); }

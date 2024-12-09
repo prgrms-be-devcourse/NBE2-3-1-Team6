@@ -103,8 +103,8 @@
     <!-- Custom fonts for this template -->
     <link href="/css/admin/all.min.css" rel="stylesheet" type="text/css">
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/css/admin/sb-admin-2.min.css" rel="stylesheet">
@@ -118,99 +118,99 @@
 
 <body id="page-top" style="background-color: #BFA288";>
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
 
-            <!-- Main Content -->
-            <div id="content" style="background-color: #BFA288; color:#260101">
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+        <!-- Main Content -->
+        <div id="content" style="background-color: #BFA288; color:#260101">
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <br>
-                    <p><a href="/" style="color:#260101; font-weight: 550;font-size: 40px; text-decoration: none;">Xmas Shop </a><a href="/page" style="color:#260101; font-weight: 550;font-size: 40px; text-decoration: none;">관리자 페이지</a></p>
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary" style="display: inline-block">상품정보 수정하기</h6>
-                        </div>
-                        <div class="card-body" >
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <tbody>
-                                    <form name="mfrm" accept-charset="utf-8">
-                                        <input type="hidden" name="productid" th:value="${categoryIdDto.id}"/>
+                <!-- Page Heading -->
+                <br>
+                <p><a href="/" style="color:#260101; font-weight: 550;font-size: 40px; text-decoration: none;">Xmas Shop </a><a href="/page" style="color:#260101; font-weight: 550;font-size: 40px; text-decoration: none;">관리자 페이지</a></p>
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary" style="display: inline-block">상품정보 수정하기</h6>
+                    </div>
+                    <div class="card-body" >
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <tbody>
+                                <form name="mfrm" accept-charset="utf-8">
+                                    <input type="hidden" name="productid" th:value="${categoryIdDto.id}"/>
+                                    <div class="contents_sub">
                                         <div class="contents_sub">
-                                            <div class="contents_sub">
-                                                <table class="table table-bordered" width="100%" cellspacing="0" >
-                                                    <tr>
-                                                        <th class="top">상품명</th>
-                                                        <td class="top">
-                                                            <input type="text" name="productname" th:value="${categoryIdDto.name}"/>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>상품가격</th>
-                                                        <td><input type="text" name="productprice" value="" class="board_view_input" th:value="${categoryIdDto.price}" />
+                                            <table class="table table-bordered" width="100%" cellspacing="0" >
+                                                <tr>
+                                                    <th class="top">상품명</th>
+                                                    <td class="top">
+                                                        <input type="text" name="productname" th:value="${categoryIdDto.name}"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>상품가격</th>
+                                                    <td><input type="text" name="productprice" value="" class="board_view_input" th:value="${categoryIdDto.price}" />
                                                         <span>원</span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>상품분류</th>
-                                                        <td>
-                                                            <select name="productcategory">
-                                                                th:selected="${itemsto.category.id==1}"
-                                                                <option value="1"
-                                                                        th:selected="${categoryIdDto.categoryId==1}">1:
-                                                                    종</option>
-                                                                <option value="2"
-                                                                        th:selected="${categoryIdDto.categoryId==2}">2:
-                                                                    인형</option>
-                                                                <option value="3"
-                                                                        th:selected="${categoryIdDto.categoryId==3}">3:
-                                                                    리본</option>
-                                                            </select>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
+                                                </tr>
+                                                <tr>
+                                                    <th>상품분류</th>
+                                                    <td>
+                                                        <select name="productcategory">
+                                                            th:selected="${itemsto.category.id==1}"
+                                                            <option value="1"
+                                                                    th:selected="${categoryIdDto.categoryId==1}">1:
+                                                                종</option>
+                                                            <option value="2"
+                                                                    th:selected="${categoryIdDto.categoryId==2}">2:
+                                                                인형</option>
+                                                            <option value="3"
+                                                                    th:selected="${categoryIdDto.categoryId==3}">3:
+                                                                리본</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
                                                     <th>상품설명</th>
-                                                        <td>
-                                                                <textarea name="productdescription" class="board_view_input" th:text="${categoryIdDto.description}" rows="5" cols="50" style="resize: none"></textarea>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>상품이미지</th>
-                                                        <td>
-                                                            <p>기존 파일명: <span id="oldFileName" th:text="${categoryIdDto.img_name}"></span></p>
-                                                            <input type="file" name="productimage" />
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-
-                                            <div class="btn_area" style="display: flex; justify-content: flex-end; gap: 10px; align-items: center;">
-                                                <button type="button" id="mbtn" class="blue blue btn_write btn_txt01" style="cursor: pointer">수정</button>
-                                            </div>
+                                                    <td>
+                                                        <textarea name="productdescription" class="board_view_input" th:text="${categoryIdDto.description}" rows="5" cols="50" style="resize: none"></textarea>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>상품이미지</th>
+                                                    <td>
+                                                        <p>기존 파일명: <span id="oldFileName" th:text="${categoryIdDto.img_name}"></span></p>
+                                                        <input type="file" name="productimage" />
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         </div>
-                                    </form>
-                                    </tbody>
-                                </table>
-                            </div>
+
+                                        <div class="btn_area" style="display: flex; justify-content: flex-end; gap: 10px; align-items: center;">
+                                            <button type="button" id="mbtn" class="blue blue btn_write btn_txt01" style="cursor: pointer">수정</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-
                 </div>
-                <!-- /.container-fluid -->
 
             </div>
-            <!-- End of Main Content -->
-        </div>
-        <!-- End of Content Wrapper -->
+            <!-- /.container-fluid -->
 
+        </div>
+        <!-- End of Main Content -->
     </div>
-    <!-- End of Page Wrapper -->
-    <footer class="footer" style="position: absolute; bottom: 0; right: 10px"><p>© 2024 Xmas Shop. Distributed by Team6</p></footer>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+<footer class="footer" style="position: absolute; bottom: 0; right: 10px"><p>© 2024 Xmas Shop. Distributed by Team6</p></footer>
 </body>
 
 </html>

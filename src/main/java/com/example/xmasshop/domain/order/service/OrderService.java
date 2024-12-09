@@ -18,7 +18,8 @@ public class OrderService {
     @Autowired
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
-    public List<OrderResponseDto> getOrders(){
+
+    public List<OrderResponseDto> getOrders() {
 
         List<OrderResponseDto> ordersResponse = new ArrayList<>();
 
